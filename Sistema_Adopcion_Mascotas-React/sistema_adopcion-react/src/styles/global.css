@@ -1,0 +1,35 @@
+:root {
+  /* Colores del logo ANIMAL HOME */
+  --primary-green: #55B7A5;
+  --secondary-green: #2F8F83;
+  --dark-blue: #2E3E56;
+
+  /* Neutros */
+  --bg-light: #FFFFFF;
+  --text-dark: #2E3E56;
+  --text-light: #FFFFFF;
+  --text-gray: #4A4A4A;
+
+  --radius: 14px;
+}
+
+/* Fondo general dinámico */
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(
+    135deg,
+    var(--primary-green),
+    var(--secondary-green),
+    var(--dark-blue)
+  );
+  background-size: 200% 200%;
+  animation: bgMove 10s ease infinite;
+  overflow-x: hidden; 
+}
+
+@keyframes bgMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}

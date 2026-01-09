@@ -1,0 +1,116 @@
+.top-navbar {
+  width: 100%;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 40px;
+  box-sizing: border-box;
+  overflow-x: hidden;
+
+  background: linear-gradient(
+    135deg,
+    var(--primary-green),
+    var(--secondary-green),
+    var(--dark-blue)
+  );
+  background-size: 300% 300%;
+  animation: navbarMove 12s ease infinite;
+
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+
+@keyframes navbarMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+
+.logo img {
+  height: 35px;           
+  width: auto;
+  object-fit: contain;
+  cursor: pointer;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.logo img:hover {
+  transform: scale(1.05);
+  opacity: 0.9;
+}
+
+.nav-center {
+  display: flex;
+  gap: 40px; /* antes estaba muy grande */
+}
+
+.nav-center a {
+  color: var(--text-light);
+  text-decoration: none;
+  font-size: 16px;
+  transition: 0.2s;
+}
+
+.nav-center a:hover {
+  color: #dff5f2;
+  font-weight: bold;
+}
+
+.nav-right a {
+  color: var(--text-light);
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: bold;
+  transition: 0.2s;
+}
+
+.nav-right a:hover {
+  color: #dff5f2;
+}
+
+.home-user-container {
+  padding: 60px 20px;
+  background-color: var(--bg-gray);
+  min-height: calc(100vh - 70px);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.adopcion-section {
+  margin-top: 60px;
+  background: var(--bg-light);
+  padding: 35px 45px;
+  border-radius: var(--radius);
+  width: 80%;
+  max-width: 900px;
+  text-align: center;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+}
+
+.adopcion-section h2 {
+  color: var(--primary-green);
+  font-size: 30px;
+  margin-bottom: 15px;
+}
+
+.adopcion-section p {
+  color: var(--text-dark);
+  line-height: 1.7;
+  font-size: 17px;
+}
+
+.user-page {
+  min-height: 100vh;
+  background-color: #f4f4f4; 
+  overflow-x: hidden;         
+}
