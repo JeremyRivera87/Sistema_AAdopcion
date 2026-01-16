@@ -1,0 +1,177 @@
+/* ===============================
+   LOGIN WRAPPER
+=================================*/
+.login-wrapper {
+  min-height: 100vh;
+  background: linear-gradient(
+    135deg,
+    var(--primary-green),
+    var(--secondary-green),
+    var(--dark-blue)
+  );
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ===============================
+   CAJA GENERAL
+=================================*/
+.login-box {
+  width: 900px;
+  height: 480px;
+  background: var(--bg-light);
+  border-radius: 20px;
+  display: flex;
+  overflow: hidden;
+  box-shadow: 0 25px 50px rgba(0,0,0,0.3);
+  animation: fadeIn 0.8s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* ===============================
+   PANEL IZQUIERDO
+=================================*/
+.login-form {
+  width: 40%;
+  padding: 40px 35px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
+.login-logo {
+  width: 250px;
+  margin: 0 auto 20px;
+}
+
+.login-form h2 {
+  color: var(--primary-green);
+  margin-bottom: 25px;
+}
+
+.login-form input {
+  width: 100%;
+  padding: 12px 14px;
+  margin-bottom: 15px;
+  border-radius: 10px;
+  border: 1.5px solid #ddd;
+  font-size: 15px;
+  transition: 0.3s;
+}
+
+.login-form input:focus {
+  outline: none;
+  border-color: var(--secondary-green);
+  box-shadow: 0 0 0 3px rgba(79,179,162,0.25);
+}
+
+.login-form button {
+  margin-top: 15px;
+  padding: 13px;
+  border: none;
+  border-radius: 12px;
+  background: linear-gradient(
+    135deg,
+    var(--secondary-green),
+    var(--primary-green)
+  );
+  color: var(--text-light);
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.login-form button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+}
+
+.login-footer {
+  margin-top: 20px;
+  font-size: 14px;
+  color: #666;
+}
+
+.login-footer span {
+  color: var(--secondary-green);
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.login-visual {
+  width: 60%;
+  background: linear-gradient(
+    135deg,
+    var(--dark-blue),
+    var(--primary-green),
+    var(--secondary-green)
+  );
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-light);
+  padding: 40px;
+  text-align: center;
+}
+
+.login-visual h1 {
+  font-size: 42px;
+  margin-bottom: 15px;
+}
+
+.login-visual p {
+  font-size: 18px;
+  line-height: 1.5;
+}
+
+.login-error {
+  color: #e63946;
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+
+.btn-back {
+  margin-top: 12px;
+  background: transparent;
+  border: 2px solid var(--tangerine);
+  color: var(--tangerine);
+  padding: 10px;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.btn-back:hover {
+  background: var(--tangerine);
+  color: white;
+  transform: translateY(-2px);
+}
+
+.login-back {
+  margin-top: 15px;
+  font-size: 14px;
+  color: var(--text-gray);
+  cursor: pointer;
+  text-align: center;
+  transition: 0.3s ease;
+}
+
+.login-back:hover {
+  color: var(--text-dark);
+  transform: translateX(-4px);
+}

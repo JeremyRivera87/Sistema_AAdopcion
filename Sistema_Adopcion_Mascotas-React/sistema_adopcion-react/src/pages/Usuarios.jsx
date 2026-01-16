@@ -23,7 +23,7 @@ const Usuarios = () => {
         </div>
 
         <div className="nav-right">
-          <a href="#">Iniciar Sesión</a>
+          <a href="/login">Iniciar Sesión</a>
         </div>
 
       </nav>
