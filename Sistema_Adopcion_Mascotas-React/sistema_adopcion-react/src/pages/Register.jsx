@@ -1,45 +1,39 @@
 import React, { useState } from "react";
-import "../styles/Login.css";
+import "../styles/Login.css"; // reutilizamos estilos
 import logo from "../img/logo-dark-transparent.png";
 import { useNavigate } from "react-router-dom";
 
-
-const Login = () => {
+const Register = () => {
+  const [nombre, setNombre] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
 
   const navigate = useNavigate();
 
-
-  const handleLogin = async (e) => {
+  const handleRegister = async (e) => {
     e.preventDefault();
     setError("");
+    setSuccess("");
 
     try {
-      const response = await fetch("http://localhost:4000/api/login", {
+      const response = await fetch("http://localhost:4000/api/register", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ email, password }),
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ nombre, email, password }),
       });
 
       const data = await response.json();
 
       if (!response.ok) {
-        setError(data.message || "Credenciales incorrectas");
+        setError(data.message);
         return;
       }
 
-      console.log("Usuario logeado:", data.usuario);
+      setSuccess("Registro exitoso. Ahora puedes iniciar sesión.");
 
-      // Redirección por rol
-      if (data.usuario.rol === "admin") {
-        window.location.href = "/admin";
-      } else {
-        window.location.href = "/";
-      }
+      setTimeout(() => navigate("/login"), 1500);
 
     } catch (err) {
       setError("Error al conectar con el servidor");
@@ -53,12 +47,20 @@ const Login = () => {
         {/* PANEL IZQUIERDO */}
         <div className="login-form">
           <img src={logo} alt="Animal Home" className="login-logo" />
-
-          <h2>Iniciar Sesión</h2>
+          <h2>Registrarse</h2>
 
           {error && <p className="login-error">{error}</p>}
+          {success && <p style={{ color: "green" }}>{success}</p>}
 
-          <form onSubmit={handleLogin}>
+          <form onSubmit={handleRegister}>
+            <input
+              type="text"
+              placeholder="Nombre completo"
+              value={nombre}
+              onChange={(e) => setNombre(e.target.value)}
+              required
+            />
+
             <input
               type="email"
               placeholder="Correo electrónico"
@@ -75,34 +77,29 @@ const Login = () => {
               required
             />
 
-            <button type="submit">Acceso</button>
-
+            <button type="submit">REGISTRARSE</button>
           </form>
 
-
-          <p className="login-footer">
-            ¿No tienes cuenta?
-            <span onClick={() => navigate("/register")}> Regístrate</span>
-          </p>
-        </div>
-
-        <div className="login-visual">
-
-          <h1>Bienvenido</h1>
-          <p>
-            Sistema de Adopción de Mascotas <br />
-            Uniendo hogares con corazones 🐾
-          </p>
-
-          <div className="login-back-right" onClick={() => navigate("/")}>
-              ← Volver al inicio
+          <div
+            className="login-back"
+            onClick={() => navigate("/login")}
+          >
+            ← Volver al login
           </div>
         </div>
-        
+
+        {/* PANEL DERECHO */}
+        <div className="login-visual">
+          <h1>Join us.</h1>
+          <p>
+            Regístrate y forma parte <br />
+            del cambio 🐾
+          </p>
+        </div>
 
       </div>
     </div>
   );
 };
 
-export default Login;
+export default Register;
