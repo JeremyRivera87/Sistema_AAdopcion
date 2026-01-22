@@ -79,6 +79,7 @@
 
 .login-form button {
   margin-top: 15px;
+  margin-left: auto;
   padding: 13px;
   border: none;
   border-radius: 12px;
