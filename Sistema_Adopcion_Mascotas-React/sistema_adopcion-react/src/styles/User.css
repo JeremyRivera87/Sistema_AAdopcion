@@ -28,7 +28,8 @@
 
 
 .logo img {
-  height: 35px;           
+  height: 35px;  
+  box-shadow: 58px;         
   width: auto;
   object-fit: contain;
   cursor: pointer;
