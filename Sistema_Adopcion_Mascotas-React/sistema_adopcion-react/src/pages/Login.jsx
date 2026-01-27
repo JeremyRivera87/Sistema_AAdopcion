@@ -34,7 +34,6 @@ const Login = () => {
 
       console.log("Usuario logeado:", data.usuario);
 
-      // Redirección por rol
       if (data.usuario.rol === "admin") {
         window.location.href = "/admin";
       } else {
@@ -50,7 +49,6 @@ const Login = () => {
     <div className="login-wrapper">
       <div className="login-box">
 
-        {/* PANEL IZQUIERDO */}
         <div className="login-form">
           <img src={logo} alt="Animal Home" className="login-logo" />
 
@@ -79,6 +77,11 @@ const Login = () => {
 
           </form>
 
+          <div className="forgot-link" 
+          onClick={() => navigate("/forgot-password")}
+          >
+            ¿Olvidaste tu contraseña?
+            </div>
 
           <p className="login-footer">
             ¿No tienes cuenta?

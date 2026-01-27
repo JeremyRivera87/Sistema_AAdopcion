@@ -1,0 +1,194 @@
+/* ===============================
+   WRAPPER GENERAL
+=================================*/
+.register-wrapper {
+  min-height: 100vh;
+  background: linear-gradient(
+    135deg,
+    var(--primary-green),
+    var(--secondary-green),
+    var(--dark-blue)
+  );
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ===============================
+   CAJA PRINCIPAL
+=================================*/
+.register-box {
+  width: 950px;
+  height: 520px;
+  background: var(--bg-light);
+  border-radius: 22px;
+  display: flex;
+  overflow: hidden;
+  box-shadow: 0 25px 55px rgba(0,0,0,0.3);
+  animation: fadeIn 0.8s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* ===============================
+   PANEL IZQUIERDO (FORM)
+=================================*/
+.register-form {
+  width: 45%;
+  padding: 35px 45px;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;       /* 🔥 SCROLL SOLO AQUÍ */
+}
+
+.register-form::-webkit-scrollbar {
+  width: 6px;
+}
+
+.register-form::-webkit-scrollbar-thumb {
+  background: var(--secondary-green);
+  border-radius: 10px;
+}
+
+.register-logo {
+  width: 200px;
+  margin: 0 auto 15px;
+}
+
+.register-form h2 {
+  text-align: center;
+  color: var(--primary-green);
+  margin-bottom: 20px;
+}
+
+/* ===============================
+   CAMPOS
+=================================*/
+.register-form-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.register-form-fields label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #555;
+}
+
+.register-form-fields input {
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: 1.5px solid #ddd;
+  font-size: 15px;
+  transition: 0.3s;
+}
+
+.register-form-fields input::placeholder {
+  color: #aaa;
+  font-size: 14px;
+}
+
+.register-form-fields input:focus {
+  outline: none;
+  border-color: var(--secondary-green);
+  box-shadow: 0 0 0 3px rgba(79,179,162,0.25);
+}
+
+/* ===============================
+   BOTÓN REGISTRARSE
+=================================*/
+.register-btn {
+  margin: 20px auto 10px;
+  width: 70%;
+  padding: 14px;
+  border: none;
+  border-radius: 14px;
+  background: linear-gradient(
+    135deg,
+    var(--secondary-green),
+    var(--primary-green)
+  );
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.register-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 22px rgba(0,0,0,0.25);
+}
+
+/* ===============================
+   MENSAJES
+=================================*/
+.register-error {
+  color: #e63946;
+  font-size: 14px;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.register-success {
+  color: #2a9d8f;
+  font-size: 14px;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+/* ===============================
+   VOLVER AL LOGIN
+=================================*/
+.register-back {
+  margin-top: 10px;
+  text-align: center;
+  font-size: 14px;
+  color: #777;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.register-back:hover {
+  color: var(--primary-green);
+  transform: translateX(-4px);
+}
+
+/* ===============================
+   PANEL DERECHO
+=================================*/
+.register-visual {
+  width: 55%;
+  background: linear-gradient(
+    135deg,
+    var(--dark-blue),
+    var(--primary-green),
+    var(--secondary-green)
+  );
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 40px;
+  color: white;
+}
+
+.register-visual h1 {
+  font-size: 42px;
+  margin-bottom: 15px;
+}
+
+.register-visual p {
+  font-size: 18px;
+  line-height: 1.6;
+}
