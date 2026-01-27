@@ -4,6 +4,7 @@ import Admin from "./pages/Admin";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import ForgotPassword from "./pages/ForgotPassword";
+import Mascotas from "./pages/Mascotas";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Route path="/Login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/forgot-password" element={<ForgotPassword />} />
+        <Route path="/Mascotas" element={<Mascotas />} />
        
 
       </Routes>
