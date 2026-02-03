@@ -7,6 +7,12 @@ import { useNavigate } from "react-router-dom";
 const Usuarios = () => {
 
   const navigate = useNavigate();
+  const usuario = JSON.parse(localStorage.getItem("usuario"))
+
+  const handleLogout = () => {
+    localStorage.removeItem("usuario");
+    navigate("/login");
+  };
   
   return (
     <div className="user-page">
@@ -28,15 +34,36 @@ const Usuarios = () => {
         </div>
 
         <div className="nav-right">
+          {!usuario ? (
           <a href="/login">Iniciar Sesión</a>
+          ) : (
+            <div className="user-icons">
+              <span className="icon-profile"
+                title="Perfil"
+                onClick={() => navigate("/perfil")}
+              >
+                👤
+              </span>
+              <span
+                className="icon-logout"
+                title="Cerrar sesión"
+                onClick={handleLogout}
+              >
+                🚪
+              </span>
+            </div>
+          )}
         </div>
-
       </nav>
 
       <main className="home-user-container">
 
         <header className="header">
-          <h1>Bienvenido al Sistema de Adopción de Mascotas</h1>
+          {usuario ? (
+          <h1>Bienvenido <span className="user-name">{usuario.nombre}</span> a Animal Home 🐾</h1>
+        ) : (
+          <h1>Bienvenido a Sistema de Adopción de Mascotas</h1>
+        )}
         </header>
 
         <section className="intro">

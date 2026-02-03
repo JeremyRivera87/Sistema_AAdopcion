@@ -76,6 +76,7 @@ const Register = () => {
           cedula,
           direccion,
           provincia,
+          canton,
         }),
       });
 

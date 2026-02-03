@@ -71,14 +71,13 @@
 }
 
 .home-user-container {
-  padding: 60px 20px;
+  padding: 40px 20px 60px;
   background-color: var(--bg-gray);
   min-height: calc(100vh - 70px);
 
   display: flex;
   flex-direction: column;
   align-items: center;
-  text-align: center;
 }
 
 .buttons {
@@ -188,4 +187,15 @@
   line-height: 1.7;
   color: var(--text-dark);
   opacity: 0.9;
+}
+
+.user-icons {
+  display: flex;
+  gap: 15px;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+.user-icons span:hover {
+  transform: scale(1.2);
 }
