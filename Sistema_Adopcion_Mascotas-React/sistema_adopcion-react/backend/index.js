@@ -16,3 +16,4 @@ app.listen(4000, () => {
 });
 
 app.use("/api", authRoutes);
+app.use("/api/admin", require("./routes/admin"));
