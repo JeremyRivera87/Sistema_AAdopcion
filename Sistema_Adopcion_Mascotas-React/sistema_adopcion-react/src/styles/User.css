@@ -150,7 +150,6 @@
   margin-bottom: 35px;
 }
 
-/* TARJETA */
 .requisito-card {
   background: var(--bg-light);
   border-radius: var(--radius);
@@ -164,14 +163,12 @@
   box-shadow: 0 14px 30px rgba(0,0,0,0.18);
 }
 
-/* IMAGEN */
 .requisito-card img {
   width: 100%;
-  height: 180px;
-  object-fit: cover;
+  height: 160px;
+  object-fit: contain;
 }
 
-/* TEXTO */
 .requisito-card p {
   padding: 18px;
   font-size: 16px;
@@ -179,7 +176,6 @@
   font-weight: 500;
 }
 
-/* TEXTO FINAL */
 .requisitos-text {
   max-width: 900px;
   margin: 0 auto;

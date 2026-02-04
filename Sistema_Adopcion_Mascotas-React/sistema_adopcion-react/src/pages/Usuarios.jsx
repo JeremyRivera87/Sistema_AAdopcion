@@ -2,6 +2,11 @@ import React from "react";
 import Carousel from "../components/Carousel";
 import "../styles/User.css";
 import logo from "../img/logo-light-transparent.png";
+import img1 from "../img/mayoria de edad.png"
+import img2 from "../img/servicios basicos 2.1.png"
+import img3 from "../img/cedula.png"
+import img4 from "../img/Formulario.png"
+
 import { useNavigate } from "react-router-dom";
 
 const Usuarios = () => {
@@ -17,7 +22,6 @@ const Usuarios = () => {
   return (
     <div className="user-page">
 
-      {/* NAVBAR */}
       <nav className="top-navbar">
 
         <div className="nav-left">
@@ -78,10 +82,8 @@ const Usuarios = () => {
           </div>
         </section>
 
-        {/* CARRUSEL */}
         <Carousel />
 
-        {/* SECCIÓN ADOPCIÓN */}
         <section className="adopcion-section">
           <h2>Adopción</h2>
           <p>
@@ -95,7 +97,6 @@ const Usuarios = () => {
           </p>
         </section>
 
-        {/* SECCIÓN REQUISITOS */}
         <section className="requisitos-section">
 
           <h2 className="requisitos-title">Requisitos</h2>
@@ -104,22 +105,22 @@ const Usuarios = () => {
           <div className="requisitos-cards">
 
             <div className="requisito-card">
-              <img src="/img/requisito1.jpg" alt="Mayoría de edad" />
+              <img src={img1} alt="Mayoría de edad" />
               <p><strong>1.</strong> Mayoría de edad</p>
             </div>
 
             <div className="requisito-card">
-              <img src="/img/requisito2.jpg" alt="Servicio básico" />
+              <img src={img2} alt="Servico Basico" />
               <p><strong>2.</strong> Copia de un servicio básico</p>
             </div>
 
             <div className="requisito-card">
-              <img src="/img/requisito3.jpg" alt="Cédula" />
+              <img src={img3} alt="Copia cedula" />
               <p><strong>3.</strong> Copia de cédula</p>
             </div>
 
             <div className="requisito-card">
-              <img src="/img/requisito4.jpg" alt="Formulario" />
+              <img src={img4} alt="Formulario" />
               <p><strong>4.</strong> Formulario de adopción</p>
             </div>
 
