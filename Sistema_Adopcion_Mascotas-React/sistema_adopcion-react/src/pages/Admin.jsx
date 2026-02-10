@@ -45,7 +45,7 @@ const Admin = () => {
 
         <nav className="nav-links">
           <a href="/admin">📊 Dashboard</a>
-          <a href="/admin/mascotas">🐶 Mascotas</a>
+          <a onClick={() => navigate("/admin/mascotas")}>🐶 Mascotas</a>
           <a href="/admin/solicitudes">📄 Solicitudes</a>
           <a href="/admin/citas">📅 Citas</a>
           <a href="/admin/historial">🩺 Historial Médico</a>
@@ -98,7 +98,7 @@ const Admin = () => {
           <h2>Acciones rápidas</h2>
 
           <div className="buttons">
-            <button className="btn">Gestionar Mascotas</button>
+            <button className="btn" onClick={() => navigate("/admin/mascotas")}>Gestionar Mascotas</button>
             <button className="btn">Ver Solicitudes</button>
             <button className="btn">Citas Programadas</button>
             <button className="btn">Historial Médico</button>

@@ -187,3 +187,185 @@
   font-weight: bold;
   color: #10b981;
 }
+
+/* =========================
+   CONTENEDOR GENERAL
+========================= */
+.home-admin-container {
+  padding: 35px;
+  min-height: 100vh;
+  background: transparent;
+}
+
+.home-admin-container h1 {
+  margin-bottom: 25px;
+  color: black;
+  font-weight: 600;
+  text-align: center;
+}
+
+/* =========================
+   FORMULARIO ADMIN
+========================= */
+.admin-form {
+  background: var(--bg-light);
+  padding: 28px;
+  border-radius: var(--radius);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.18);
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  margin-bottom: 45px;
+}
+
+.admin-form input,
+.admin-form select,
+.admin-form textarea {
+  width: 100%;
+  padding: 13px;
+  border-radius: var(--radius);
+  border: 1px solid #dcdcdc;
+  font-size: 14px;
+  color: var(--text-dark);
+  outline: none;
+  background: #f9f9f9;
+}
+
+.admin-form input::placeholder,
+.admin-form textarea::placeholder {
+  color: var(--text-gray);
+}
+
+.admin-form input:focus,
+.admin-form select:focus,
+.admin-form textarea:focus {
+  border-color: var(--primary-green);
+  background: #ffffff;
+}
+
+/* =========================
+   TEXTAREA
+========================= */
+.admin-form textarea {
+  grid-column: span 2;
+  resize: none;
+  min-height: 100px;
+}
+
+/* =========================
+   INPUT FOTO
+========================= */
+.foto-input {
+  grid-column: span 2;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.foto-input label {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-dark);
+}
+
+.foto-input input[type="file"] {
+  padding: 8px;
+  background: #f4f4f4;
+  border-radius: var(--radius);
+  cursor: pointer;
+}
+
+/* PREVIEW */
+.preview img {
+  margin-top: 8px;
+  border-radius: var(--radius);
+  border: 2px solid var(--primary-green);
+}
+
+/* =========================
+   BOTÓN
+========================= */
+.admin-form button {
+  grid-column: span 2;
+  padding: 14px;
+  background: linear-gradient(
+    135deg,
+    var(--primary-green),
+    var(--secondary-green)
+  );
+  color: var(--text-light);
+  border: none;
+  border-radius: var(--radius);
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.admin-form button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.25);
+}
+
+/* =========================
+   TABLA ADMIN
+========================= */
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--bg-light);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.18);
+}
+
+.admin-table thead {
+  background: linear-gradient(
+    135deg,
+    var(--primary-green),
+    var(--secondary-green)
+  );
+  color: var(--text-light);
+}
+
+.admin-table th,
+.admin-table td {
+  padding: 15px;
+  text-align: center;
+  font-size: 14px;
+  color: var(--text-dark);
+}
+
+.admin-table tbody tr {
+  border-bottom: 1px solid #eee;
+}
+
+.admin-table tbody tr:hover {
+  background: rgba(85, 183, 165, 0.15);
+}
+
+.admin-table img {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+@media (max-width: 768px) {
+  .admin-form {
+    grid-template-columns: 1fr;
+  }
+
+  .admin-form textarea,
+  .foto-input,
+  .admin-form button {
+    grid-column: span 1;
+  }
+
+  .home-admin-container h1 {
+    font-size: 22px;
+  }
+}
