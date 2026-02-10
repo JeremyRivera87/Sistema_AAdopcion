@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
-import "../styles/Admin.css";
+import { useNavigate } from 'react-router-dom';
+import "../styles/AdminMascotas.css";
 
 const AdminMascotas = () => {
+  const navigate = useNavigate();
   const [mascotas, setMascotas] = useState([]);
   const [form, setForm] = useState({
     nombre: "",
@@ -154,7 +156,6 @@ const AdminMascotas = () => {
           onChange={handleChange}
         ></textarea>
         
-        {/* 📸 INPUT DE FOTO */}
         <div className="foto-input">
           <label htmlFor="foto">Foto de la mascota:</label>
           <input 
@@ -165,7 +166,6 @@ const AdminMascotas = () => {
             onChange={handleFileChange}
           />
           
-          {/* Previsualización */}
           {previsualizacion && (
             <div className="preview">
               <img src={previsualizacion} alt="Preview" style={{ maxWidth: "200px", marginTop: "10px" }} />
@@ -174,9 +174,9 @@ const AdminMascotas = () => {
         </div>
 
         <button type="submit">Agregar Mascota</button>
+        <button type="button" onClick={() => navigate('/admin')}>Regresar</button>
       </form>
 
-      {/* LISTA */}
       <table className="admin-table">
         <thead>
           <tr>

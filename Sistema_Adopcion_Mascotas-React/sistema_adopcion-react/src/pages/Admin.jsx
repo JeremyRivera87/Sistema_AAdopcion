@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import "../styles/Admin.css";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 const Admin = () => {
-
   const navigate = useNavigate();
+  const location = useLocation();
 
   const [stats, setStats] = useState({
     usuarios: 0,
@@ -13,29 +13,48 @@ const Admin = () => {
     citas: 0,
   });
 
+  const [cargando, setCargando] = useState(true);
+
+  const cargarEstadisticas = async () => {
+    setCargando(true);
+    try {
+      const resStats = await fetch("http://localhost:4000/api/admin/stats");
+      const dataStats = await resStats.json();
+
+      const resMascotas = await fetch("http://localhost:4000/api/mascotas");
+      const dataMascotas = await resMascotas.json();
+
+      setStats({
+        usuarios: dataStats.usuarios || 0,
+        mascotas: dataMascotas.length || 0,
+        solicitudes: dataStats.solicitudes || 0,
+        citas: dataStats.citas || 0,
+      });
+    } catch (error) {
+      console.error("Error cargando estadísticas", error);
+    } finally {
+      setCargando(false);
+    }
+  };
+
   useEffect(() => {
     const usuario = JSON.parse(localStorage.getItem("usuario"));
 
     if (!usuario || usuario.rol !== "admin") {
       navigate("/login");
-    } else {
-      cargarEstadisticas();
+      return;
     }
-  }, [navigate]);
 
-  const cargarEstadisticas = async () => {
-    try {
-      const response = await fetch("http://localhost:4000/api/admin/stats");
-      const data = await response.json();
-      setStats(data);
-    } catch (error) {
-      console.error("Error cargando estadísticas", error);
-    }
+    cargarEstadisticas();
+  }, [location, navigate]);
+
+  const cerrarSesion = () => {
+    localStorage.removeItem("usuario");
+    navigate("/login");
   };
 
   return (
     <div className="admin-layout">
-
       {/* SIDEBAR */}
       <aside className="sidebar">
         <div className="logo">
@@ -44,17 +63,13 @@ const Admin = () => {
         </div>
 
         <nav className="nav-links">
-          <a href="/admin">📊 Dashboard</a>
+          <a onClick={() => navigate("/admin")}>📊 Dashboard</a>
           <a onClick={() => navigate("/admin/mascotas")}>🐶 Mascotas</a>
-          <a href="/admin/solicitudes">📄 Solicitudes</a>
-          <a href="/admin/citas">📅 Citas</a>
-          <a href="/admin/historial">🩺 Historial Médico</a>
+          <a onClick={() => navigate("/admin/solicitudes")}>📄 Solicitudes</a>
+          <a onClick={() => navigate("/admin/citas")}>📅 Citas</a>
+          <a onClick={() => navigate("/admin/historial")}>🩺 Historial Médico</a>
 
-          <a
-            href="/login"
-            className="logout"
-            onClick={() => localStorage.removeItem("usuario")}
-          >
+          <a className="logout" onClick={cerrarSesion}>
             🚪 Cerrar sesión
           </a>
         </nav>
@@ -62,49 +77,57 @@ const Admin = () => {
 
       {/* CONTENIDO */}
       <main className="home-admin-container">
-
         <header className="header">
           <h1>Panel de Administración</h1>
           <p>Control general del sistema Animal Home</p>
         </header>
 
-        {/* CARDS */}
-        <section className="admin-cards">
+        {cargando ? (
+          <p style={{ textAlign: "center", padding: "40px", color: "#666" }}>
+            Cargando estadísticas...
+          </p>
+        ) : (
+          <section className="admin-cards">
+            <div className="admin-card">
+              <h3>Usuarios</h3>
+              <p>{stats.usuarios}</p>
+            </div>
 
-          <div className="admin-card">
-            <h3>Usuarios</h3>
-            <p>{stats.usuarios}</p>
-          </div>
+            <div className="admin-card">
+              <h3>Mascotas</h3>
+              <p>{stats.mascotas}</p>
+            </div>
 
-          <div className="admin-card">
-            <h3>Mascotas</h3>
-            <p>{stats.mascotas}</p>
-          </div>
+            <div className="admin-card">
+              <h3>Solicitudes</h3>
+              <p>{stats.solicitudes}</p>
+            </div>
 
-          <div className="admin-card">
-            <h3>Solicitudes</h3>
-            <p>{stats.solicitudes}</p>
-          </div>
+            <div className="admin-card">
+              <h3>Citas</h3>
+              <p>{stats.citas}</p>
+            </div>
+          </section>
+        )}
 
-          <div className="admin-card">
-            <h3>Citas</h3>
-            <p>{stats.citas}</p>
-          </div>
-
-        </section>
-
-        {/* ACCIONES */}
         <section className="intro">
           <h2>Acciones rápidas</h2>
 
           <div className="buttons">
-            <button className="btn" onClick={() => navigate("/admin/mascotas")}>Gestionar Mascotas</button>
-            <button className="btn">Ver Solicitudes</button>
-            <button className="btn">Citas Programadas</button>
-            <button className="btn">Historial Médico</button>
+            <button className="btn" onClick={() => navigate("/admin/mascotas")}>
+              Gestionar Mascotas
+            </button>
+            <button className="btn" onClick={() => navigate("/admin/solicitudes")}>
+              Ver Solicitudes
+            </button>
+            <button className="btn" onClick={() => navigate("/admin/citas")}>
+              Citas Programadas
+            </button>
+            <button className="btn" onClick={() => navigate("/admin/historial")}>
+              Historial Médico
+            </button>
           </div>
         </section>
-
       </main>
     </div>
   );
