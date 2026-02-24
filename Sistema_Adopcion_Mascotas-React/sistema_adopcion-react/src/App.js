@@ -6,6 +6,11 @@ import Register from "./pages/Register";
 import ForgotPassword from "./pages/ForgotPassword";
 import Mascotas from "./pages/Mascotas";
 import AdminMascotas from "./pages/AdminMascotas";
+import AgendarCitas from './pages/AgendarCitas';
+import MisCitas from './pages/MisCitas';
+import AdminCitas from './pages/AdminCitas';
+import Donar from './pages/Donar';
+
 
 function App() {
   return (
@@ -18,6 +23,11 @@ function App() {
         <Route path="/forgot-password" element={<ForgotPassword />} />
         <Route path="/Mascotas" element={<Mascotas />} />
        <Route path="/admin/mascotas" element={<AdminMascotas />} />
+       <Route path="/agendar-cita" element={<AgendarCitas />} />
+       <Route path="/mis-citas" element={<MisCitas />} />
+       <Route path="/admin/citas" element={<AdminCitas />} />
+       <Route path="/donar" element={<Donar />} />
+
 
       </Routes>
     </Router>

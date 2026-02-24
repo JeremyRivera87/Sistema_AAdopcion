@@ -1,0 +1,164 @@
+/* =========================
+   CONTENEDOR PRINCIPAL
+========================= */
+.agendar-cita-container {
+  min-height: 100vh;
+  padding: 80px 20px 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.agendar-cita-content {
+  max-width: 700px;
+  width: 100%;
+  background: var(--bg-light);
+  padding: 40px;
+  border-radius: var(--radius);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+}
+
+.agendar-cita-content h1 {
+  color: var(--text-dark);
+  font-size: 32px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.subtitle {
+  color: var(--text-gray);
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 16px;
+}
+
+/* =========================
+   FORMULARIO
+========================= */
+.cita-form {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group.full-width {
+  grid-column: span 2;
+}
+
+.form-group label {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-dark);
+  margin-bottom: 8px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  padding: 12px;
+  border: 1px solid #dcdcdc;
+  border-radius: var(--radius);
+  font-size: 14px;
+  color: var(--text-dark);
+  outline: none;
+  background: #f9f9f9;
+  transition: all 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: var(--primary-green);
+  background: var(--bg-light);
+  box-shadow: 0 0 0 3px rgba(85, 183, 165, 0.1);
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 100px;
+  font-family: inherit;
+}
+
+.form-group small {
+  margin-top: 5px;
+  font-size: 12px;
+  color: var(--text-gray);
+}
+
+/* =========================
+   BOTONES
+========================= */
+.form-actions {
+  grid-column: span 2;
+  display: flex;
+  gap: 15px;
+  margin-top: 10px;
+}
+
+.btn-cancelar,
+.btn-agendar {
+  flex: 1;
+  padding: 14px;
+  border: none;
+  border-radius: var(--radius);
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-cancelar {
+  background: #e5e7eb;
+  color: var(--text-dark);
+}
+
+.btn-cancelar:hover {
+  background: #d1d5db;
+}
+
+.btn-agendar {
+  background: linear-gradient(135deg, var(--primary-green), var(--secondary-green));
+  color: var(--text-light);
+}
+
+.btn-agendar:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(85, 183, 165, 0.3);
+}
+
+.btn-agendar:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+@media (max-width: 768px) {
+  .agendar-cita-content {
+    padding: 30px 20px;
+  }
+
+  .agendar-cita-content h1 {
+    font-size: 26px;
+  }
+
+  .cita-form {
+    grid-template-columns: 1fr;
+  }
+
+  .form-group.full-width {
+    grid-column: span 1;
+  }
+
+  .form-actions {
+    grid-column: span 1;
+    flex-direction: column;
+  }
+}

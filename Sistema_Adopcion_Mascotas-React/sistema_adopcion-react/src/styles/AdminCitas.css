@@ -1,0 +1,270 @@
+/* =========================
+   CONTENEDOR PRINCIPAL
+========================= */
+.admin-citas-container {
+  padding: 40px;
+  background-color: #f4f6f8;
+  min-height: 100vh;
+}
+
+.admin-citas-header {
+  margin-bottom: 30px;
+}
+
+.header-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.admin-citas-header h1 {
+  color: var(--text-dark);
+  font-size: 32px;
+  margin: 0;
+}
+
+.btn-regresar {
+  padding: 10px 20px;
+  background: var(--bg-light);
+  border: 2px solid var(--primary-green);
+  color: var(--primary-green);
+  border-radius: var(--radius);
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.btn-regresar:hover {
+  background: var(--primary-green);
+  color: var(--text-light);
+}
+
+/* =========================
+   FILTROS
+========================= */
+.filtros {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.filtros button {
+  padding: 10px 20px;
+  background: var(--bg-light);
+  border: 2px solid #e5e7eb;
+  color: var(--text-dark);
+  border-radius: var(--radius);
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.filtros button:hover {
+  border-color: var(--primary-green);
+  color: var(--primary-green);
+}
+
+.filtro-activo {
+  background: var(--primary-green) !important;
+  border-color: var(--primary-green) !important;
+  color: var(--text-light) !important;
+}
+
+/* =========================
+   ESTADOS
+========================= */
+.loading,
+.sin-resultados {
+  text-align: center;
+  padding: 60px;
+  background: var(--bg-light);
+  border-radius: var(--radius);
+  color: var(--text-gray);
+  font-size: 18px;
+}
+
+/* =========================
+   TABLA
+========================= */
+.tabla-container {
+  background: var(--bg-light);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.citas-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.citas-table thead {
+  background: linear-gradient(135deg, var(--primary-green), var(--secondary-green));
+  color: var(--text-light);
+}
+
+.citas-table th {
+  padding: 15px;
+  text-align: left;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.citas-table td {
+  padding: 15px;
+  border-bottom: 1px solid #e5e7eb;
+  font-size: 14px;
+  color: var(--text-dark);
+}
+
+.citas-table tbody tr:hover {
+  background: rgba(85, 183, 165, 0.05);
+}
+
+/* =========================
+   INFO EN TABLA
+========================= */
+.usuario-info,
+.mascota-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.usuario-info strong,
+.mascota-info strong {
+  color: var(--text-dark);
+  font-size: 14px;
+}
+
+.usuario-info small,
+.mascota-info small {
+  color: var(--text-gray);
+  font-size: 12px;
+}
+
+/* =========================
+   BADGES DE ESTADO
+========================= */
+.badge {
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.badge-pendiente {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.badge-confirmada {
+  background: #d1fae5;
+  color: #065f46;
+}
+
+.badge-cancelada {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.badge-completada {
+  background: #dbeafe;
+  color: #1e40af;
+}
+
+/* =========================
+   BOTONES DE ACCIÓN
+========================= */
+.acciones {
+  display: flex;
+  gap: 8px;
+}
+
+.btn-confirmar,
+.btn-cancelar-admin,
+.btn-completar {
+  padding: 8px 12px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.btn-confirmar {
+  background: #d1fae5;
+  color: #065f46;
+}
+
+.btn-confirmar:hover {
+  background: #a7f3d0;
+  transform: translateY(-2px);
+}
+
+.btn-cancelar-admin {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.btn-cancelar-admin:hover {
+  background: #fecaca;
+  transform: translateY(-2px);
+}
+
+.btn-completar {
+  background: #dbeafe;
+  color: #1e40af;
+}
+
+.btn-completar:hover {
+  background: #bfdbfe;
+  transform: translateY(-2px);
+}
+
+.texto-final {
+  color: var(--text-gray);
+  font-size: 18px;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+@media (max-width: 1024px) {
+  .tabla-container {
+    overflow-x: auto;
+  }
+
+  .citas-table {
+    min-width: 900px;
+  }
+}
+
+@media (max-width: 768px) {
+  .admin-citas-container {
+    padding: 20px;
+  }
+
+  .header-top {
+    flex-direction: column;
+    gap: 15px;
+    align-items: flex-start;
+  }
+
+  .admin-citas-header h1 {
+    font-size: 24px;
+  }
+
+  .filtros {
+    gap: 8px;
+  }
+
+  .filtros button {
+    font-size: 12px;
+    padding: 8px 15px;
+  }
+}

@@ -24,11 +24,14 @@ const Admin = () => {
       const resMascotas = await fetch("http://localhost:4000/api/mascotas");
       const dataMascotas = await resMascotas.json();
 
+      const resCitas = await fetch("http://localhost:4000/api/citas");
+      const dataCitas = await resCitas.json();
+
       setStats({
         usuarios: dataStats.usuarios || 0,
         mascotas: dataMascotas.length || 0,
         solicitudes: dataStats.solicitudes || 0,
-        citas: dataStats.citas || 0,
+        citas: dataCitas.length || 0,
       });
     } catch (error) {
       console.error("Error cargando estadísticas", error);

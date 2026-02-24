@@ -3,7 +3,8 @@ const cors = require("cors");
 const path = require('path');
 const authRoutes = require("./routes/auth");
 const mascotasRoutes = require("./routes/mascotas");
-
+const citasRoutes = require('./routes/citas');
+const donacionesRoutes = require('./routes/donaciones')
 
 const app = express();
 app.use(cors());
@@ -21,5 +22,6 @@ app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 app.use("/api", authRoutes);
 app.use("/api/admin", require("./routes/admin"));
-
 app.use("/api/mascotas", mascotasRoutes);
+app.use('/api/citas', citasRoutes);
+app.use('/api/donaciones', donacionesRoutes);

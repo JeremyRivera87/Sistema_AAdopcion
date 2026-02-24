@@ -12,11 +12,21 @@ import { useNavigate } from "react-router-dom";
 const Usuarios = () => {
 
   const navigate = useNavigate();
-  const usuario = JSON.parse(localStorage.getItem("usuario"))
+  const usuario = JSON.parse(localStorage.getItem("usuario"));
 
   const handleLogout = () => {
     localStorage.removeItem("usuario");
     navigate("/login");
+  };
+
+  // 🔹 Función para agendar cita (verificar sesión)
+  const handleAgendarCita = () => {
+    if (!usuario) {
+      alert("Debes iniciar sesión para agendar una cita");
+      navigate("/login");
+    } else {
+      navigate("/agendar-cita");
+    }
   };
   
   return (
@@ -77,8 +87,8 @@ const Usuarios = () => {
 
           <div className="buttons">
             <button className="btn" onClick={() => navigate("/Mascotas")}>Ver Mascotas</button>
-            <button className="btn">Agendar Cita</button>
-            <button className="btn">Donaciones</button>
+            <button className="btn" onClick={handleAgendarCita}>Agendar Cita</button>
+            <button className="btn" onClick={() => navigate("/donar")}>Donaciones</button>
           </div>
         </section>
 
