@@ -1,0 +1,150 @@
+/* =========================
+   OVERLAY
+========================= */
+.alert-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* =========================
+   CONTENEDOR DE ALERTA
+========================= */
+.alert-container {
+  background: var(--bg-light);
+  border-radius: var(--radius);
+  padding: 40px 35px;
+  max-width: 450px;
+  width: 90%;
+  text-align: center;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  animation: slideUp 0.3s ease;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* =========================
+   ICONO
+========================= */
+.alert-icon {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 25px;
+  font-size: 35px;
+  font-weight: bold;
+}
+
+.icon-success {
+  background: #d1fae5;
+  color: #065f46;
+}
+
+.icon-error {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.icon-warning {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.icon-info {
+  background: #dbeafe;
+  color: #1e40af;
+}
+
+/* =========================
+   TEXTO
+========================= */
+.alert-title {
+  color: var(--text-dark);
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+.alert-message {
+  color: var(--text-gray);
+  font-size: 16px;
+  line-height: 1.6;
+  margin-bottom: 30px;
+}
+
+/* =========================
+   BOTÓN
+========================= */
+.alert-button {
+  width: 100%;
+  padding: 14px;
+  background: linear-gradient(135deg, var(--primary-green), var(--secondary-green));
+  color: var(--text-light);
+  border: none;
+  border-radius: var(--radius);
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.alert-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(85, 183, 165, 0.3);
+}
+
+.alert-button:active {
+  transform: translateY(0);
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+@media (max-width: 480px) {
+  .alert-container {
+    padding: 30px 25px;
+  }
+
+  .alert-icon {
+    width: 60px;
+    height: 60px;
+    font-size: 30px;
+  }
+
+  .alert-title {
+    font-size: 20px;
+  }
+
+  .alert-message {
+    font-size: 14px;
+  }
+}

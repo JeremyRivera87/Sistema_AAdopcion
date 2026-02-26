@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import CustomAlert from "../components/CustomAlert";
 import "../styles/Donar.css";
 
 const Donar = () => {
@@ -9,13 +10,18 @@ const Donar = () => {
     nombre_donante: "",
     email_donante: "",
     monto: "",
-    tipo_donacion: "monetaria",
     metodo_pago: "",
     mensaje: "",
     comprobante: null
   });
   const [previsualizacion, setPrevisualizacion] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [alert, setAlert] = useState({
+    isOpen: false,
+    title: "",
+    message: "",
+    type: "info"
+  });
 
   // 🔹 Verificar sesión y prellenar datos
   useEffect(() => {
@@ -73,7 +79,7 @@ const Donar = () => {
       formData.append("nombre_donante", form.nombre_donante);
       formData.append("email_donante", form.email_donante);
       formData.append("monto", form.monto);
-      formData.append("tipo_donacion", form.tipo_donacion);
+      formData.append("tipo_donacion", "monetaria"); // ← FIJO como monetaria
       formData.append("metodo_pago", form.metodo_pago);
       formData.append("mensaje", form.mensaje);
       
@@ -87,67 +93,121 @@ const Donar = () => {
       });
 
       if (response.ok) {
-        alert("¡Gracias por tu donación! 💚 Tu apoyo hace la diferencia.");
-        
-        // Resetear formulario
-        setForm({
-          nombre_donante: usuario ? usuario.nombre : "",
-          email_donante: usuario ? usuario.email : "",
-          monto: "",
-          tipo_donacion: "monetaria",
-          metodo_pago: "",
-          mensaje: "",
-          comprobante: null
+        setAlert({
+          isOpen: true,
+          title: "¡Donación Registrada!",
+          message: "Gracias por tu donación. Tu apoyo hace la diferencia.",
+          type: "success"
         });
-        setPrevisualizacion(null);
-        
-        // Redirigir
-        if (usuario) {
-          navigate("/mis-donaciones");
-        } else {
-          navigate("/");
-        }
       } else {
         const error = await response.json();
-        alert(error.message || "Error al registrar la donación");
+        setAlert({
+          isOpen: true,
+          title: "Error",
+          message: error.message || "Error al registrar la donación",
+          type: "error"
+        });
       }
     } catch (error) {
       console.error("Error al enviar donación:", error);
-      alert("Error de conexión con el servidor");
+      setAlert({
+        isOpen: true,
+        title: "Error de conexión",
+        message: "No se pudo conectar con el servidor",
+        type: "error"
+      });
     } finally {
       setLoading(false);
+    }
+  };
+
+  const handleCloseAlert = () => {
+    setAlert({ ...alert, isOpen: false });
+    
+    // Si la donación fue exitosa, redirigir
+    if (alert.type === "success") {
+      navigate("/");
     }
   };
 
   return (
     <div className="donar-container">
       <div className="donar-content">
+        <button className="btn-atras" onClick={() => navigate("/seleccionar-donacion")}>
+          ← Cambiar tipo de donación
+        </button>
+
         <div className="donar-header">
-          <h1>Hacer una Donación 💚</h1>
-          <p className="subtitle">Tu generosidad ayuda a darles una segunda oportunidad</p>
+          <h1>Donación en Efectivo 💵</h1>
+          <p className="subtitle">Tu apoyo económico nos ayuda a mantener el refugio funcionando</p>
         </div>
 
-        <div className="donacion-info">
-          <div className="info-card">
-            <span className="icon">🏠</span>
-            <div>
-              <h3>Refugio</h3>
-              <p>Mantenimiento y cuidado de instalaciones</p>
+        {/* Info de cuentas bancarias */}
+        <div className="info-bancaria">
+          <h3>📋 Información Bancaria para Transferencias:</h3>
+          
+          <div className="cuentas-grid">
+            {/* Banco Pichincha */}
+            <div className="cuenta-card">
+              <div className="banco-header">
+                <strong>🏦 Banco Pichincha</strong>
+              </div>
+              <div className="cuenta-detalles">
+                <div className="detalle-item">
+                  <span className="label">Tipo de Cuenta:</span>
+                  <span className="value">Cuenta Corriente</span>
+                </div>
+                <div className="detalle-item">
+                  <span className="label">Número de Cuenta:</span>
+                  <span className="value cuenta-numero">2100-1234-5678</span>
+                </div>
+                <div className="detalle-item">
+                  <span className="label">Beneficiario:</span>
+                  <span className="value">Refugio Animal Home</span>
+                </div>
+                <div className="detalle-item">
+                  <span className="label">RUC:</span>
+                  <span className="value">1234567890001</span>
+                </div>
+                <div className="detalle-item">
+                  <span className="label">Correo:</span>
+                  <span className="value">donaciones@animalhome.org</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Banco Guayaquil */}
+            <div className="cuenta-card">
+              <div className="banco-header">
+                <strong>🏦 Banco Guayaquil</strong>
+              </div>
+              <div className="cuenta-detalles">
+                <div className="detalle-item">
+                  <span className="label">Tipo de Cuenta:</span>
+                  <span className="value">Cuenta de Ahorros</span>
+                </div>
+                <div className="detalle-item">
+                  <span className="label">Número de Cuenta:</span>
+                  <span className="value cuenta-numero">0012-3456-7890</span>
+                </div>
+                <div className="detalle-item">
+                  <span className="label">Beneficiario:</span>
+                  <span className="value">Refugio Animal Home</span>
+                </div>
+                <div className="detalle-item">
+                  <span className="label">RUC:</span>
+                  <span className="value">1234567890001</span>
+                </div>
+                <div className="detalle-item">
+                  <span className="label">Correo:</span>
+                  <span className="value">donaciones@animalhome.org</span>
+                </div>
+              </div>
             </div>
           </div>
-          <div className="info-card">
-            <span className="icon">🍖</span>
-            <div>
-              <h3>Alimentación</h3>
-              <p>Comida y nutrición para las mascotas</p>
-            </div>
-          </div>
-          <div className="info-card">
-            <span className="icon">💊</span>
-            <div>
-              <h3>Salud</h3>
-              <p>Medicamentos y atención veterinaria</p>
-            </div>
+
+          <div className="nota-importante">
+            <strong>⚠️ Importante:</strong> Por favor, sube el comprobante de tu transferencia para que podamos verificar y registrar tu donación.
           </div>
         </div>
 
@@ -155,7 +215,7 @@ const Donar = () => {
           
           {/* Información del donante */}
           <div className="form-section">
-            <h3>Información del Donante</h3>
+            <h3>Tus Datos</h3>
             
             <div className="form-row">
               <div className="form-group">
@@ -190,37 +250,19 @@ const Donar = () => {
           <div className="form-section">
             <h3>Detalles de la Donación</h3>
             
-            <div className="form-row">
-              <div className="form-group">
-                <label htmlFor="tipo_donacion">Tipo de donación *</label>
-                <select
-                  id="tipo_donacion"
-                  name="tipo_donacion"
-                  value={form.tipo_donacion}
-                  onChange={handleChange}
-                  required
-                >
-                  <option value="monetaria">Monetaria</option>
-                  <option value="alimento">Alimento</option>
-                  <option value="medicinas">Medicinas</option>
-                  <option value="otros">Otros</option>
-                </select>
-              </div>
-
-              <div className="form-group">
-                <label htmlFor="monto">Monto (USD) *</label>
-                <input
-                  type="number"
-                  id="monto"
-                  name="monto"
-                  value={form.monto}
-                  onChange={handleChange}
-                  placeholder="0.00"
-                  min="1"
-                  step="0.01"
-                  required
-                />
-              </div>
+            <div className="form-group">
+              <label htmlFor="monto">Monto a donar (USD) *</label>
+              <input
+                type="number"
+                id="monto"
+                name="monto"
+                value={form.monto}
+                onChange={handleChange}
+                placeholder="0.00"
+                min="1"
+                step="0.01"
+                required
+              />
             </div>
 
             {/* Montos sugeridos */}
@@ -263,15 +305,16 @@ const Donar = () => {
 
             {/* Comprobante */}
             <div className="form-group full-width">
-              <label htmlFor="comprobante">Comprobante de pago (opcional)</label>
+              <label htmlFor="comprobante">Comprobante de pago *</label>
               <input
                 type="file"
                 id="comprobante"
                 name="comprobante"
                 accept="image/*,.pdf"
                 onChange={handleFileChange}
+                required
               />
-              <small>Formatos aceptados: JPG, PNG, PDF (máx. 5MB)</small>
+              <small>Sube una foto o PDF de tu comprobante (máx. 5MB)</small>
               
               {previsualizacion && (
                 <div className="preview">
@@ -290,7 +333,7 @@ const Donar = () => {
             <button 
               type="button" 
               className="btn-cancelar"
-              onClick={() => navigate(-1)}
+              onClick={() => navigate("/")}
             >
               Cancelar
             </button>
@@ -299,13 +342,22 @@ const Donar = () => {
               className="btn-donar"
               disabled={loading}
             >
-              {loading ? "Procesando..." : "💚 Realizar Donación"}
+              {loading ? "Procesando..." : "💚 Confirmar Donación"}
             </button>
           </div>
         </form>
       </div>
+
+      {/* Alerta personalizada */}
+      <CustomAlert
+        isOpen={alert.isOpen}
+        onClose={handleCloseAlert}
+        title={alert.title}
+        message={alert.message}
+        type={alert.type}
+      />
     </div>
   );
 };
 
-export default Donar;   
+export default Donar;

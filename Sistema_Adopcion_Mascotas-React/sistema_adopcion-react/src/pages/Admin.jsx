@@ -11,6 +11,8 @@ const Admin = () => {
     mascotas: 0,
     solicitudes: 0,
     citas: 0,
+    donaciones: 0,
+    totalRecaudado: "0.00",
   });
 
   const [cargando, setCargando] = useState(true);
@@ -27,11 +29,28 @@ const Admin = () => {
       const resCitas = await fetch("http://localhost:4000/api/citas");
       const dataCitas = await resCitas.json();
 
+      const resDonaciones = await fetch("http://localhost:4000/api/donaciones");
+      const dataDonaciones = await resDonaciones.json();
+
+      const totalRecaudado = dataDonaciones
+        .filter(d => d.tipo_donacion === "monetaria")
+        .reduce((sum, d) => sum + parseFloat(d.monto || 0), 0);
+
+      console.log("📊 Estadísticas cargadas:", {
+        usuarios: dataStats.usuarios,
+        mascotas: dataMascotas.length,
+        citas: dataCitas.length,
+        donaciones: dataDonaciones.length,
+        totalRecaudado: totalRecaudado
+      });
+
       setStats({
         usuarios: dataStats.usuarios || 0,
         mascotas: dataMascotas.length || 0,
         solicitudes: dataStats.solicitudes || 0,
         citas: dataCitas.length || 0,
+        donaciones: dataDonaciones.length || 0,
+        totalRecaudado: totalRecaudado.toFixed(2) 
       });
     } catch (error) {
       console.error("Error cargando estadísticas", error);
@@ -66,13 +85,14 @@ const Admin = () => {
         </div>
 
         <nav className="nav-links">
-          <a onClick={() => navigate("/admin")}>📊 Dashboard</a>
-          <a onClick={() => navigate("/admin/mascotas")}>🐶 Mascotas</a>
-          <a onClick={() => navigate("/admin/solicitudes")}>📄 Solicitudes</a>
-          <a onClick={() => navigate("/admin/citas")}>📅 Citas</a>
-          <a onClick={() => navigate("/admin/historial")}>🩺 Historial Médico</a>
+          <a onClick={() => navigate("/admin")} style={{ cursor: "pointer" }}>📊 Dashboard</a>
+          <a onClick={() => navigate("/admin/mascotas")} style={{ cursor: "pointer" }}>🐶 Mascotas</a>
+          <a onClick={() => navigate("/admin/solicitudes")} style={{ cursor: "pointer" }}>📄 Solicitudes</a>
+          <a onClick={() => navigate("/admin/citas")} style={{ cursor: "pointer" }}>📅 Citas</a>
+          <a onClick={() => navigate("/admin/donaciones")} style={{ cursor: "pointer" }}>💰 Donaciones</a>
+          <a onClick={() => navigate("/admin/historial")} style={{ cursor: "pointer" }}>🩺 Historial Médico</a>
 
-          <a className="logout" onClick={cerrarSesion}>
+          <a className="logout" onClick={cerrarSesion} style={{ cursor: "pointer" }}>
             🚪 Cerrar sesión
           </a>
         </nav>
@@ -110,6 +130,16 @@ const Admin = () => {
               <h3>Citas</h3>
               <p>{stats.citas}</p>
             </div>
+
+            <div className="admin-card">
+              <h3>Donaciones</h3>
+              <p>{stats.donaciones}</p>
+            </div>
+
+            <div className="admin-card donaciones-card">
+              <h3>Total Recaudado</h3>
+              <p>${stats.totalRecaudado}</p>
+            </div>
           </section>
         )}
 
@@ -128,6 +158,9 @@ const Admin = () => {
             </button>
             <button className="btn" onClick={() => navigate("/admin/historial")}>
               Historial Médico
+            </button>
+            <button className="btn" onClick={() => navigate("/admin/donaciones")}>
+              Gestionar Donaciones
             </button>
           </div>
         </section>

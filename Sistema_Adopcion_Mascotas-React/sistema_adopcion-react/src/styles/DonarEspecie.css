@@ -1,13 +1,13 @@
 /* =========================
    CONTENEDOR PRINCIPAL
 ========================= */
-.donar-container {
+.donar-especie-container {
   min-height: 100vh;
   padding: 80px 20px 60px;
   background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
 }
 
-.donar-content {
+.donar-especie-content {
   max-width: 900px;
   margin: 0 auto;
 }
@@ -16,16 +16,20 @@
    BOTÓN ATRÁS
 ========================= */
 .btn-atras {
-  padding: 10px 20px;
-  background: var(--bg-light);
-  border: 2px solid var(--primary-green);
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  padding: 12px 24px;
+  background: white;
   color: var(--primary-green);
+  border: 2px solid var(--primary-green);
   border-radius: 25px;
-  cursor: pointer;
   font-size: 14px;
   font-weight: 600;
-  margin-bottom: 30px;
+  cursor: pointer;
   transition: all 0.3s ease;
+  z-index: 1000;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
 .btn-atras:hover {
@@ -37,12 +41,12 @@
 /* =========================
    HEADER
 ========================= */
-.donar-header {
+.header {
   text-align: center;
   margin-bottom: 40px;
 }
 
-.donar-header h1 {
+.header h1 {
   color: var(--text-dark);
   font-size: 36px;
   margin-bottom: 10px;
@@ -51,12 +55,13 @@
 .subtitle {
   color: var(--text-gray);
   font-size: 18px;
+  line-height: 1.5;
 }
 
 /* =========================
-   INFORMACIÓN BANCARIA
+   ARTÍCULOS NECESITADOS
 ========================= */
-.info-bancaria {
+.articulos-necesitados {
   background: var(--bg-light);
   padding: 30px;
   border-radius: var(--radius);
@@ -64,100 +69,57 @@
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
-.info-bancaria h3 {
+.articulos-necesitados h3 {
   color: var(--text-dark);
   font-size: 20px;
-  margin-bottom: 25px;
+  margin-bottom: 20px;
   text-align: center;
 }
 
-.cuentas-grid {
+.necesidades-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 25px;
-  margin-bottom: 25px;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 20px;
 }
 
-.cuenta-card {
+.necesidad-item {
+  text-align: center;
+  padding: 20px 15px;
   background: #f9fafb;
   border-radius: 12px;
-  overflow: hidden;
-  border: 2px solid #e5e7eb;
   transition: all 0.3s ease;
+  border: 2px solid transparent;
 }
 
-.cuenta-card:hover {
+.necesidad-item:hover {
   border-color: var(--primary-green);
-  box-shadow: 0 8px 20px rgba(85, 183, 165, 0.15);
-  transform: translateY(-3px);
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(85, 183, 165, 0.2);
 }
 
-.banco-header {
-  background: linear-gradient(135deg, var(--primary-green), var(--secondary-green));
-  color: var(--text-light);
-  padding: 15px 20px;
-  text-align: center;
-}
-
-.banco-header strong {
-  font-size: 18px;
-}
-
-.cuenta-detalles {
-  padding: 20px;
-}
-
-.detalle-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px 0;
-  border-bottom: 1px solid #e5e7eb;
-}
-
-.detalle-item:last-child {
-  border-bottom: none;
-}
-
-.detalle-item .label {
-  color: var(--text-gray);
-  font-size: 13px;
-  font-weight: 500;
-}
-
-.detalle-item .value {
-  color: var(--text-dark);
-  font-size: 14px;
-  font-weight: 600;
-  text-align: right;
-}
-
-.cuenta-numero {
-  color: var(--primary-green) !important;
-  font-family: 'Courier New', monospace;
-  font-size: 15px !important;
-}
-
-/* Nota importante */
-.nota-importante {
-  background: #fef3c7;
-  border-left: 4px solid #f59e0b;
-  padding: 15px 20px;
-  border-radius: 8px;
-  margin-top: 20px;
-}
-
-.nota-importante strong {
-  color: #92400e;
-  font-size: 14px;
+.necesidad-icon {
+  font-size: 40px;
   display: block;
+  margin-bottom: 10px;
+}
+
+.necesidad-item strong {
+  display: block;
+  color: var(--text-dark);
+  font-size: 15px;
   margin-bottom: 5px;
+}
+
+.necesidad-item p {
+  color: var(--text-gray);
+  font-size: 12px;
+  line-height: 1.4;
 }
 
 /* =========================
    FORMULARIO
 ========================= */
-.donacion-form {
+.form-especie {
   background: var(--bg-light);
   padding: 40px;
   border-radius: var(--radius);
@@ -232,65 +194,42 @@
 }
 
 /* =========================
-   MONTOS SUGERIDOS
+   INFO DIRECCIÓN
 ========================= */
-.montos-sugeridos {
-  margin: 20px 0;
-}
-
-.montos-sugeridos p {
-  color: var(--text-dark);
-  font-size: 14px;
-  font-weight: 600;
-  margin-bottom: 10px;
-}
-
-.montos-buttons {
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-}
-
-.montos-buttons button {
-  padding: 10px 20px;
-  background: #e5e7eb;
-  border: 2px solid #d1d5db;
-  color: var(--text-dark);
+.info-direccion {
+  background: #e0f2f1;
+  padding: 15px 20px;
   border-radius: var(--radius);
-  cursor: pointer;
-  font-size: 16px;
-  font-weight: 600;
-  transition: all 0.3s ease;
+  margin: 20px 0;
+  border-left: 4px solid var(--primary-green);
 }
 
-.montos-buttons button:hover {
-  background: var(--primary-green);
-  border-color: var(--primary-green);
-  color: var(--text-light);
-  transform: translateY(-2px);
+.info-direccion strong {
+  display: block;
+  color: var(--text-dark);
+  font-size: 15px;
+  margin-bottom: 5px;
+}
+
+.info-direccion p {
+  color: var(--text-gray);
+  font-size: 14px;
+  margin: 0;
 }
 
 /* =========================
-   PREVIEW DE COMPROBANTE
+   PREVIEW DE FOTO
 ========================= */
 .preview {
   margin-top: 15px;
 }
 
 .preview img {
-  max-width: 200px;
+  max-width: 300px;
+  width: 100%;
   border-radius: var(--radius);
   border: 2px solid var(--primary-green);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
-
-.pdf-preview {
-  padding: 20px;
-  background: #f0f0f0;
-  border-radius: var(--radius);
-  text-align: center;
-  font-size: 18px;
-  color: var(--text-gray);
 }
 
 /* =========================
@@ -344,23 +283,36 @@
    RESPONSIVE
 ========================= */
 @media (max-width: 768px) {
-  .donar-container {
+  .donar-especie-container {
     padding: 60px 15px 40px;
   }
 
-  .donar-header h1 {
+  .header h1 {
     font-size: 28px;
   }
 
-  .info-bancaria {
+  .articulos-necesitados {
     padding: 20px;
   }
 
-  .cuentas-grid {
-    grid-template-columns: 1fr;
+  .necesidades-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
   }
 
-  .donacion-form {
+  .necesidad-icon {
+    font-size: 30px;
+  }
+
+  .necesidad-item strong {
+    font-size: 13px;
+  }
+
+  .necesidad-item p {
+    font-size: 11px;
+  }
+
+  .form-especie {
     padding: 25px 20px;
   }
 
@@ -376,12 +328,18 @@
     flex-direction: column;
   }
 
-  .montos-buttons {
-    justify-content: space-between;
+  .preview img {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .necesidades-grid {
+    grid-template-columns: 1fr;
   }
 
-  .montos-buttons button {
-    flex: 1;
-    min-width: 70px;
+  .btn-atras {
+    width: 100%;
+    text-align: center;
   }
 }

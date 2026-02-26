@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import Carousel from "../components/Carousel";
+import CustomAlert from "../components/CustomAlert";
 import "../styles/User.css";
 import logo from "../img/logo-light-transparent.png";
 import img1 from "../img/mayoria de edad.png"
@@ -14,6 +15,14 @@ const Usuarios = () => {
   const navigate = useNavigate();
   const usuario = JSON.parse(localStorage.getItem("usuario"));
 
+  // Estado para la alerta personalizada
+  const [alert, setAlert] = useState({
+    isOpen: false,
+    title: "",
+    message: "",
+    type: "info"
+  });
+
   const handleLogout = () => {
     localStorage.removeItem("usuario");
     navigate("/login");
@@ -22,10 +31,24 @@ const Usuarios = () => {
   // 🔹 Función para agendar cita (verificar sesión)
   const handleAgendarCita = () => {
     if (!usuario) {
-      alert("Debes iniciar sesión para agendar una cita");
-      navigate("/login");
+      setAlert({
+        isOpen: true,
+        title: "Sesión requerida",
+        message: "Debes iniciar sesión para agendar una cita",
+        type: "warning"
+      });
     } else {
       navigate("/agendar-cita");
+    }
+  };
+
+  // Cerrar alerta y redirigir a login si es necesario
+  const handleCloseAlert = () => {
+    setAlert({ ...alert, isOpen: false });
+    
+    // Si era alerta de login, redirigir
+    if (alert.type === "warning" && alert.title === "Sesión requerida") {
+      navigate("/login");
     }
   };
   
@@ -88,7 +111,7 @@ const Usuarios = () => {
           <div className="buttons">
             <button className="btn" onClick={() => navigate("/Mascotas")}>Ver Mascotas</button>
             <button className="btn" onClick={handleAgendarCita}>Agendar Cita</button>
-            <button className="btn" onClick={() => navigate("/donar")}>Donaciones</button>
+            <button className="btn" onClick={() => navigate("/donaciones")}>Donaciones</button>
           </div>
         </section>
 
@@ -146,6 +169,15 @@ const Usuarios = () => {
         </section>
 
       </main>
+
+      {/* Alerta personalizada */}
+      <CustomAlert
+        isOpen={alert.isOpen}
+        onClose={handleCloseAlert}
+        title={alert.title}
+        message={alert.message}
+        type={alert.type}
+      />
 
     </div>
   );
