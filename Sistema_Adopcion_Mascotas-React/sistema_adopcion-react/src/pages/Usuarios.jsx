@@ -99,7 +99,7 @@ const Usuarios = () => {
           {usuario ? (
           <h1>Bienvenido <span className="user-name">{usuario.nombre}</span> a Animal Home 🐾</h1>
         ) : (
-          <h1>Bienvenido a Sistema de Adopción de Mascotas</h1>
+          <h1>Bienvenido al Sistema de Adopción de Mascotas</h1>
         )}
         </header>
 

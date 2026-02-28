@@ -1,80 +1,112 @@
+/* =========================
+   NAVBAR MEJORADO
+========================= */
 .top-navbar {
   width: 100%;
-  height: 70px;
+  height: 80px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 40px;
+  padding: 0 60px;
   box-sizing: border-box;
   overflow-x: hidden;
-
-  background: linear-gradient(
-    135deg,
-    var(--primary-green),
-    var(--secondary-green),
-    var(--dark-blue)
-  );
-  background-size: 300% 300%;
-  animation: navbarMove 12s ease infinite;
-
-  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  background: linear-gradient(135deg, var(--primary-green), var(--secondary-green));
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }
-
-@keyframes navbarMove {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
 
 .logo img {
-  height: 35px;  
-  box-shadow: 58px;         
+  height: 45px;
   width: auto;
   object-fit: contain;
   cursor: pointer;
-  transition: transform 0.3s ease, opacity 0.3s ease;
+  transition: transform 0.3s ease, filter 0.3s ease;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
 }
 
 .logo img:hover {
-  transform: scale(1.05);
-  opacity: 0.9;
+  transform: scale(1.08);
 }
 
 .nav-center {
   display: flex;
-  gap: 40px; /* antes estaba muy grande */
+  gap: 45px;
 }
 
 .nav-center a {
   color: var(--text-light);
   text-decoration: none;
   font-size: 16px;
-  transition: 0.2s;
+  font-weight: 500;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.nav-center a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -5px;
+  left: 50%;
+  background-color: var(--text-light);
+  transition: all 0.3s ease;
+  transform: translateX(-50%);
 }
 
 .nav-center a:hover {
-  color: #dff5f2;
-  font-weight: bold;
+  color: #ffffff;
+}
+
+.nav-center a:hover::after {
+  width: 100%;
 }
 
 .nav-right a {
   color: var(--text-light);
   text-decoration: none;
   font-size: 16px;
-  font-weight: bold;
-  transition: 0.2s;
+  font-weight: 600;
+  padding: 10px 25px;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 25px;
+  transition: all 0.3s ease;
 }
 
 .nav-right a:hover {
-  color: #dff5f2;
+  background: rgba(255, 255, 255, 0.25);
+  transform: translateY(-2px);
 }
 
+.user-icons {
+  display: flex;
+  gap: 18px;
+  align-items: center;
+}
+
+.user-icons span {
+  font-size: 24px;
+  cursor: pointer;
+  padding: 10px 14px;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.user-icons span:hover {
+  transform: scale(1.15);
+  background: rgba(255, 255, 255, 0.25);
+}
+
+/* =========================
+   RESTO DEL CSS ORIGINAL
+========================= */
 .home-user-container {
   padding: 40px 20px 60px;
   background-color: var(--bg-gray);
-  min-height: calc(100vh - 70px);
-
+  min-height: calc(100vh - 80px);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -115,8 +147,20 @@
   overflow-x: hidden;         
 }
 
+/* ===== TÍTULO DE BIENVENIDA ===== */
+.header h1 {
+  font-size: 42px;
+  font-weight: 800;
+  background: linear-gradient(180deg, var(--secondary-green), var(--dark-blue));
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-align: center;
+  margin-top: 40px;
+}
+
 /* ===============================
-   SECCIÓN REQUISITOS
+   SECCIÓN REQUISITOS CON EFECTO ILUMINADO
 =================================*/
 .requisitos-section {
   margin-top: 70px;
@@ -125,7 +169,6 @@
   text-align: center;
 }
 
-/* TÍTULO */
 .requisitos-title {
   font-size: 32px;
   font-weight: bold;
@@ -133,7 +176,6 @@
   margin-bottom: 10px;
 }
 
-/* LÍNEA DECORATIVA */
 .requisitos-line {
   width: 60px;
   height: 4px;
@@ -142,7 +184,6 @@
   border-radius: 10px;
 }
 
-/* CONTENEDOR DE TARJETAS */
 .requisitos-cards {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
@@ -155,18 +196,44 @@
   border-radius: var(--radius);
   overflow: hidden;
   box-shadow: 0 8px 22px rgba(0,0,0,0.12);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: all 0.3s ease;
+  border: 3px solid transparent;
+  position: relative;
 }
 
+/* EFECTO DE ILUMINACIÓN AL PASAR EL CURSOR */
 .requisito-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 14px 30px rgba(0,0,0,0.18);
+  transform: translateY(-10px);
+  box-shadow: 0 20px 50px rgba(85, 183, 165, 0.3);
+  border-color: var(--primary-green);
+  background: linear-gradient(135deg, #ffffff, #f0fdf9);
+}
+
+.requisito-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.requisito-card:hover::before {
+  opacity: 1;
 }
 
 .requisito-card img {
   width: 100%;
   height: 160px;
   object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+.requisito-card:hover img {
+  transform: scale(1.05);
 }
 
 .requisito-card p {
@@ -185,13 +252,24 @@
   opacity: 0.9;
 }
 
-.user-icons {
-  display: flex;
-  gap: 15px;
-  font-size: 22px;
-  cursor: pointer;
-}
+/* =========================
+   RESPONSIVE
+========================= */
+@media (max-width: 768px) {
+  .top-navbar {
+    height: 70px;
+    padding: 0 20px;
+  }
 
-.user-icons span:hover {
-  transform: scale(1.2);
+  .logo img {
+    height: 35px;
+  }
+
+  .nav-center {
+    display: none;
+  }
+
+  .user-icons span {
+    font-size: 20px;
+  }
 }

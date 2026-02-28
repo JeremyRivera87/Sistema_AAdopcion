@@ -1,4 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { useState, useEffect } from "react";
+import Loader from "./components/Loader";
 import Usuarios from "./pages/Usuarios";
 import Admin from "./pages/Admin";
 import Login from "./pages/Login";
@@ -17,6 +19,11 @@ import AdminDonaciones from './pages/AdminDonaciones';
 
 
 function App() {
+  const [loading, setLoading] = useState(true);
+  if (loading) {
+    return <Loader onFinish={() => setLoading(false)} />;
+  }
+  
   return (
     <Router>
       <Routes>
