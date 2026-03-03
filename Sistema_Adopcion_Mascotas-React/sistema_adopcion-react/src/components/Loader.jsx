@@ -3,35 +3,49 @@ import "../styles/Loader.css";
 
 const Loader = ({ onFinish }) => {
   const [progress, setProgress] = useState(0);
+  const [isDone, setIsDone] = useState(false); // Nueva bandera para el cierre
 
   useEffect(() => {
     const interval = setInterval(() => {
       setProgress((prev) => {
         if (prev >= 100) {
           clearInterval(interval);
-          setTimeout(() => {
-            onFinish();
-          }, 500);
           return 100;
         }
-        return prev + 1; // ← Aumenta de 1 en 1
+        return prev + 1;
       });
-    }, 80); // ← Cada 60ms = 6 segundos total
+    }, 40); // Velocidad fluida
 
     return () => clearInterval(interval);
-  }, [onFinish]);
+  }, []);
+
+  useEffect(() => {
+    if (progress === 100) {
+      // 1. Esperamos un momento para que el usuario vea el 100%
+      const timerShow100 = setTimeout(() => {
+        setIsDone(true); // Activamos el fade-out de CSS
+      }, 400);
+
+      // 2. Esperamos a que la animación de salida termine antes de llamar a onFinish
+      const timerFinish = setTimeout(() => {
+        onFinish();
+      }, 1200);
+
+      return () => {
+        clearTimeout(timerShow100);
+        clearTimeout(timerFinish);
+      };
+    }
+  }, [progress, onFinish]);
 
   return (
-    <div className={`loader-wrapper ${progress === 100 ? "fade-out" : ""}`}>
+    /* Usamos isDone para la clase de salida, así no se corta el progreso */
+    <div className={`loader-wrapper ${isDone ? "fade-out" : ""}`}>
       
       <div className="animation-scene">
-        {/* Perro corriendo */}
         <div className="dog-emoji">🐕</div>
-        
-        {/* Sombra del perro */}
         <div className="dog-shadow"></div>
-        
-        {/* Huellitas que aparecen */}
+
         <div className="paw-prints">
           <span className="paw paw-1">🐾</span>
           <span className="paw paw-2">🐾</span>
@@ -39,19 +53,14 @@ const Loader = ({ onFinish }) => {
           <span className="paw paw-4">🐾</span>
           <span className="paw paw-5">🐾</span>
         </div>
-        
-        {/* Casa */}
+
         <div className="house-emoji">🏡</div>
-        
-        {/* Nubes decorativas */}
+
         <div className="cloud cloud-1">☁️</div>
         <div className="cloud cloud-2">☁️</div>
         <div className="cloud cloud-3">☁️</div>
-        
-        {/* Sol */}
+
         <div className="sun">☀️</div>
-        
-        {/* Césped */}
         <div className="grass"></div>
       </div>
 

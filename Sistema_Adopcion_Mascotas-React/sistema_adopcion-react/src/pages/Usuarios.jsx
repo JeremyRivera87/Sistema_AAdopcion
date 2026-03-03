@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Carousel from "../components/Carousel";
 import CustomAlert from "../components/CustomAlert";
+import Footer from "../components/Footer";
 import "../styles/User.css";
 import logo from "../img/logo-light-transparent.png";
 import img1 from "../img/mayoria de edad.png"
@@ -109,7 +110,7 @@ const Usuarios = () => {
           </p>
 
           <div className="buttons">
-            <button className="btn" onClick={() => navigate("/Mascotas")}>Ver Mascotas</button>
+            <button className="btn" onClick={() => navigate("/info-mascotas")}>Ver Mascotas</button>
             <button className="btn" onClick={handleAgendarCita}>Agendar Cita</button>
             <button className="btn" onClick={() => navigate("/donaciones")}>Donaciones</button>
           </div>
@@ -178,6 +179,8 @@ const Usuarios = () => {
         message={alert.message}
         type={alert.type}
       />
+
+      <Footer />
 
     </div>
   );

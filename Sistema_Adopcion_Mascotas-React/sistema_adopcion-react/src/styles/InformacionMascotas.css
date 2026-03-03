@@ -1,0 +1,456 @@
+/* =========================
+   PÁGINA GENERAL
+========================= */
+.info-mascotas-page {
+  background: #f9fafb;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* =========================
+   HERO SECTION
+========================= */
+.hero-mascotas {
+  height: 500px;
+  background: linear-gradient(135deg, rgba(85, 183, 165, 0.9), rgba(47, 143, 131, 0.9)),
+              url('https://images.unsplash.com/photo-1548199973-03cce0bbc87b?w=1920') center/cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  color: white;
+  text-align: center;
+}
+
+.hero-overlay {
+  padding: 40px;
+  max-width: 800px;
+}
+
+.hero-mascotas h1 {
+  font-size: 48px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.hero-mascotas p {
+  font-size: 20px;
+  margin-bottom: 30px;
+  line-height: 1.6;
+  text-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
+}
+
+.btn-hero {
+  padding: 18px 40px;
+  background: white;
+  color: var(--primary-green);
+  border: none;
+  border-radius: 50px;
+  font-size: 18px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+.btn-hero:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.3);
+}
+
+/* =========================
+   TÍTULOS DE SECCIONES
+========================= */
+.section-title {
+  font-size: 36px;
+  color: var(--text-dark);
+  text-align: center;
+  margin-bottom: 15px;
+  font-weight: 700;
+}
+
+.section-subtitle {
+  text-align: center;
+  color: var(--text-gray);
+  font-size: 18px;
+  margin-bottom: 50px;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* =========================
+   PROCESO DE ADOPCIÓN
+========================= */
+.proceso-section {
+  padding: 80px 20px;
+  background: white;
+}
+
+.proceso-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+}
+
+.proceso-card {
+  background: #f9fafb;
+  padding: 40px 30px;
+  border-radius: 16px;
+  text-align: center;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+  position: relative;
+}
+
+.proceso-card:hover {
+  transform: translateY(-8px);
+  border-color: var(--primary-green);
+  box-shadow: 0 15px 40px rgba(85, 183, 165, 0.2);
+}
+
+.proceso-numero {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  width: 40px;
+  height: 40px;
+  background: var(--primary-green);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.proceso-icon {
+  font-size: 60px;
+  margin-bottom: 20px;
+}
+
+.proceso-card h3 {
+  color: var(--text-dark);
+  font-size: 22px;
+  margin-bottom: 15px;
+  font-weight: 600;
+}
+
+.proceso-card p {
+  color: var(--text-gray);
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+/* =========================
+   BENEFICIOS
+========================= */
+.beneficios-section {
+  padding: 80px 20px;
+  background: #f9fafb;
+}
+
+.beneficios-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+}
+
+.beneficio-card {
+  background: white;
+  padding: 35px 30px;
+  border-radius: 16px;
+  text-align: center;
+  transition: all 0.3s ease;
+  border: 2px solid #e5e7eb;
+}
+
+.beneficio-card:hover {
+  border-color: var(--primary-green);
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(85, 183, 165, 0.15);
+}
+
+.beneficio-icon {
+  font-size: 50px;
+  margin-bottom: 15px;
+}
+
+.beneficio-card h3 {
+  color: var(--text-dark);
+  font-size: 20px;
+  margin-bottom: 12px;
+  font-weight: 600;
+}
+
+.beneficio-card p {
+  color: var(--text-gray);
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+/* =========================
+   ESTADÍSTICAS
+========================= */
+.estadisticas-section {
+  padding: 80px 20px;
+  background: linear-gradient(135deg, var(--primary-green), var(--secondary-green));
+  color: white;
+}
+
+.estadisticas-section .section-title {
+  color: white;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 30px;
+}
+
+.stat-card {
+  text-align: center;
+  padding: 30px 20px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+}
+
+.stat-card:hover {
+  transform: scale(1.05);
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.stat-number {
+  font-size: 48px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.stat-label {
+  font-size: 16px;
+  opacity: 0.9;
+}
+
+/* =========================
+   HISTORIAS DE ÉXITO
+========================= */
+.historias-section {
+  padding: 80px 20px;
+  background: white;
+}
+
+.historias-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+}
+
+.historia-card {
+  background: linear-gradient(135deg, #f9fafb, #ffffff);
+  padding: 35px 30px;
+  border-radius: 16px;
+  border: 2px solid #e5e7eb;
+  transition: all 0.3s ease;
+  text-align: center;
+}
+
+.historia-card:hover {
+  border-color: var(--primary-green);
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(85, 183, 165, 0.15);
+}
+
+.historia-emoji {
+  font-size: 60px;
+  margin-bottom: 20px;
+}
+
+.historia-card h3 {
+  color: var(--text-dark);
+  font-size: 22px;
+  margin-bottom: 15px;
+  font-weight: 600;
+}
+
+.historia-card p {
+  color: var(--text-gray);
+  font-size: 15px;
+  line-height: 1.7;
+  margin-bottom: 15px;
+  font-style: italic;
+}
+
+.historia-autor {
+  color: var(--primary-green);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+/* =========================
+   REQUISITOS PREVIOS
+========================= */
+.requisitos-previos-section {
+  padding: 80px 20px;
+  background: #f9fafb;
+}
+
+.requisitos-previos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
+}
+
+.requisito-previo {
+  background: white;
+  padding: 25px 30px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  border: 2px solid #e5e7eb;
+  transition: all 0.3s ease;
+}
+
+.requisito-previo:hover {
+  border-color: var(--primary-green);
+  transform: translateX(5px);
+}
+
+.requisito-icon {
+  width: 40px;
+  height: 40px;
+  background: #d1fae5;
+  color: #065f46;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 20px;
+  flex-shrink: 0;
+}
+
+.requisito-previo h3 {
+  color: var(--text-dark);
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0;
+}
+
+/* =========================
+   CTA FINAL
+========================= */
+.cta-final {
+  padding: 80px 20px;
+  background: linear-gradient(135deg, var(--primary-green), var(--secondary-green));
+  text-align: center;
+  color: white;
+}
+
+.cta-content h2 {
+  font-size: 40px;
+  margin-bottom: 15px;
+  font-weight: 700;
+}
+
+.cta-content p {
+  font-size: 20px;
+  margin-bottom: 30px;
+  opacity: 0.95;
+}
+
+.btn-cta-final {
+  padding: 18px 50px;
+  background: white;
+  color: var(--primary-green);
+  border: none;
+  border-radius: 50px;
+  font-size: 20px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+.btn-cta-final:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.3);
+}
+
+/* =========================
+   BOTÓN VOLVER
+========================= */
+.btn-volver-home {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  padding: 12px 24px;
+  background: white;
+  color: var(--primary-green);
+  border: 2px solid var(--primary-green);
+  border-radius: 25px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 1000;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.btn-volver-home:hover {
+  background: var(--primary-green);
+  color: white;
+  transform: translateX(-5px);
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+@media (max-width: 768px) {
+  .hero-mascotas {
+    height: 400px;
+  }
+
+  .hero-mascotas h1 {
+    font-size: 32px;
+  }
+
+  .hero-mascotas p {
+    font-size: 16px;
+  }
+
+  .section-title {
+    font-size: 28px;
+  }
+
+  .section-subtitle {
+    font-size: 16px;
+  }
+
+  .proceso-grid,
+  .beneficios-grid,
+  .historias-grid,
+  .requisitos-previos-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .btn-volver-home {
+    top: 10px;
+    left: 10px;
+    font-size: 12px;
+    padding: 10px 18px;
+  }
+}

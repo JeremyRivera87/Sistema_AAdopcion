@@ -2,11 +2,15 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { useState, useEffect } from "react";
 import Loader from "./components/Loader";
 import Usuarios from "./pages/Usuarios";
+import Perfil from "./pages/Perfil";
 import Admin from "./pages/Admin";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import ForgotPassword from "./pages/ForgotPassword";
+import InformacionMascotas from './pages/InformacionMascotas';
 import Mascotas from "./pages/Mascotas";
+import DetalleMascota from './pages/DetalleMascota';
+import FormularioAdopcion from './pages/FormularioAdopcion';
 import AdminMascotas from "./pages/AdminMascotas";
 import AgendarCitas from './pages/AgendarCitas';
 import MisCitas from './pages/MisCitas';
@@ -31,8 +35,12 @@ function App() {
         <Route path="/admin" element={<Admin />} />
         <Route path="/Login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/perfil" element={<Perfil />} />
         <Route path="/forgot-password" element={<ForgotPassword />} />
+        <Route path="/info-mascotas" element={<InformacionMascotas />} />
         <Route path="/Mascotas" element={<Mascotas />} />
+        <Route path="/mascota/:id" element={<DetalleMascota />} />
+        <Route path="/adoptar/:id" element={<FormularioAdopcion />} />
         <Route path="/admin/mascotas" element={<AdminMascotas />} />
         <Route path="/admin/donaciones" element={<AdminDonaciones />} />
         <Route path="/agendar-cita" element={<AgendarCitas />} />

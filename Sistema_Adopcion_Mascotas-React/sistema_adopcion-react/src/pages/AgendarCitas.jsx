@@ -9,7 +9,7 @@ const AgendarCita = () => {
     const usuario = JSON.parse(localStorage.getItem("usuario"));
     
     if (!usuario) {
-      alert("Debes iniciar sesión para agendar una cita");
+      alert("Debes iniciar sesión o registrarse para agendar una cita");
       navigate("/login");
     }
   }, [navigate]);

@@ -22,6 +22,12 @@
 .fade-out {
   opacity: 0;
   visibility: hidden;
+  transition: opacity 0.8s ease-in-out, visibility 0.8s ease-in-out;
+}
+
+/* Mejora opcional para que la barra se mueva más suave */
+.progress-fill {
+  transition: width 0.1s linear; 
 }
 
 @keyframes gradientShift {
