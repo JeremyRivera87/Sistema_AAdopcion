@@ -54,8 +54,6 @@ router.get("/:id", async (req, res) => {
   try {
     const { id } = req.params;
     
-    console.log('🔍 Buscando mascota ID:', id);
-    
     // Obtener datos de la mascota
     const mascotaResult = await pool.query(
       'SELECT * FROM mascotas WHERE id = $1',
@@ -63,12 +61,10 @@ router.get("/:id", async (req, res) => {
     );
 
     if (mascotaResult.rows.length === 0) {
-      console.log('❌ Mascota no encontrada');
       return res.status(404).json({ message: 'Mascota no encontrada' });
     }
 
     const mascota = mascotaResult.rows[0];
-    console.log('✅ Mascota encontrada:', mascota.nombre);
 
     // Obtener historial médico (si existe la tabla)
     let historialMedico = [];
@@ -78,7 +74,6 @@ router.get("/:id", async (req, res) => {
         [id]
       );
       historialMedico = historialResult.rows;
-      console.log(`📋 Historial médico: ${historialMedico.length} registros`);
     } catch (error) {
       console.log('⚠️ Tabla historial_medico no existe todavía');
     }
@@ -101,23 +96,40 @@ router.post("/", upload.single('foto'), async (req, res) => {
     raza,
     edad,
     sexo,
+    tamaño,          
+    peso,            
+    color,           
+    vacunado,        
+    esterilizado,    
+    desparasitado,   
     descripcion
   } = req.body;
 
   try {
     const foto_url = req.file ? `/uploads/${req.file.filename}` : null;
 
-    console.log('📝 Datos recibidos:', { nombre, especie, raza, edad, sexo, descripcion, foto_url });
-
     const result = await pool.query(
       `INSERT INTO mascotas 
-      (nombre, especie, raza, edad, sexo, descripcion, foto_url)
-      VALUES ($1, $2, $3, $4, $5, $6, $7)
+      (nombre, especie, raza, edad, sexo, tamaño, peso, color, 
+       vacunado, esterilizado, desparasitado, descripcion, foto_url)
+      VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13)
       RETURNING *`,
-      [nombre, especie, raza, edad, sexo, descripcion, foto_url]
+      [
+        nombre, 
+        especie, 
+        raza, 
+        edad, 
+        sexo, 
+        tamaño || null,
+        peso || null,
+        color || null,
+        vacunado === 'true' || vacunado === true,
+        esterilizado === 'true' || esterilizado === true,
+        desparasitado === 'true' || desparasitado === true,
+        descripcion, 
+        foto_url
+      ]
     );
-
-    console.log('✅ Mascota creada exitosamente');
 
     res.status(201).json({
       message: "Mascota registrada correctamente",
@@ -137,7 +149,20 @@ router.post("/", upload.single('foto'), async (req, res) => {
 router.put("/:id", upload.single('foto'), async (req, res) => {
   try {
     const { id } = req.params;
-    const { nombre, especie, raza, edad, sexo, descripcion } = req.body;
+    const { 
+      nombre, 
+      especie, 
+      raza, 
+      edad, 
+      sexo, 
+      tamaño,         
+      peso,            
+      color,           
+      vacunado,        
+      esterilizado,    
+      desparasitado,   
+      descripcion 
+    } = req.body;
     
     let foto_url;
     if (req.file) {
@@ -151,9 +176,26 @@ router.put("/:id", upload.single('foto'), async (req, res) => {
     const result = await pool.query(
       `UPDATE mascotas 
        SET nombre = $1, especie = $2, raza = $3, edad = $4, sexo = $5, 
-           descripcion = $6, foto_url = $7
-       WHERE id = $8 RETURNING *`,
-      [nombre, especie, raza, edad, sexo, descripcion, foto_url, id]
+           tamaño = $6, peso = $7, color = $8,
+           vacunado = $9, esterilizado = $10, desparasitado = $11,
+           descripcion = $12, foto_url = $13
+       WHERE id = $14 RETURNING *`,
+      [
+        nombre, 
+        especie, 
+        raza, 
+        edad, 
+        sexo, 
+        tamaño || null,
+        peso || null,
+        color || null,
+        vacunado === 'true' || vacunado === true,
+        esterilizado === 'true' || esterilizado === true,
+        desparasitado === 'true' || desparasitado === true,
+        descripcion, 
+        foto_url, 
+        id
+      ]
     );
 
     if (result.rows.length === 0) {

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import CustomAlert from "../components/CustomAlert";
+import Footer from "../components/Footer";
 import "../styles/Mascotas.css";
 
 const Mascotas = () => {
@@ -131,7 +132,7 @@ const Mascotas = () => {
               
               {/* Overlay simple con nombre y edad */}
               <div className="mascota-overlay-simple">
-                <h3>{mascota.nombre}</h3>
+                <h3 className="NM">{mascota.nombre}</h3>
                 <p> Edad: {mascota.edad ? `${mascota.edad}` : "Edad no especificada"}</p>
               </div>
             </div>
@@ -161,7 +162,6 @@ const Mascotas = () => {
           </div>
         ))}
       </div>
-
       {/* Alerta personalizada */}
       <CustomAlert
         isOpen={alert.isOpen}
@@ -170,6 +170,7 @@ const Mascotas = () => {
         message={alert.message}
         type={alert.type}
       />
+      <Footer />
     </section>
   );
 };
