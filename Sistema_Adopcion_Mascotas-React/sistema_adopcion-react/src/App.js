@@ -11,6 +11,8 @@ import InformacionMascotas from './pages/InformacionMascotas';
 import Mascotas from "./pages/Mascotas";
 import DetalleMascota from './pages/DetalleMascota';
 import FormularioAdopcion from './pages/FormularioAdopcion';
+import DetalleSolicitud from './pages/DetalleSolicitud';
+import AdminSolicitudes from './pages/AdminSolicitudes';
 import AdminMascotas from "./pages/AdminMascotas";
 import AgendarCitas from './pages/AgendarCitas';
 import MisCitas from './pages/MisCitas';
@@ -41,6 +43,7 @@ function App() {
         <Route path="/Mascotas" element={<Mascotas />} />
         <Route path="/mascota/:id" element={<DetalleMascota />} />
         <Route path="/adoptar/:id" element={<FormularioAdopcion />} />
+        <Route path="/admin/solicitudes" element={<AdminSolicitudes />} />
         <Route path="/admin/mascotas" element={<AdminMascotas />} />
         <Route path="/admin/donaciones" element={<AdminDonaciones />} />
         <Route path="/agendar-cita" element={<AgendarCitas />} />
@@ -51,6 +54,7 @@ function App() {
         <Route path="/donar-especie" element={<DonarEspecie />} />
         <Route path="/seleccionar-donacion" element={<SeleccionarDonacion />} />
         <Route path="/admin/donaciones" element={<AdminDonaciones />} />
+        <Route path="/admin/solicitud/:id" element={<DetalleSolicitud />} />
 
       </Routes>
     </Router>

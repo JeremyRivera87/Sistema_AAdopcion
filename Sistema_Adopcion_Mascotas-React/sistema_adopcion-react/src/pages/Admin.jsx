@@ -32,6 +32,9 @@ const Admin = () => {
       const resDonaciones = await fetch("http://localhost:4000/api/donaciones");
       const dataDonaciones = await resDonaciones.json();
 
+      const resSolicitudes = await fetch("http://localhost:4000/api/solicitudes");
+      const dataSolicitudes = await resSolicitudes.json();
+
       const totalRecaudado = dataDonaciones
         .filter(d => d.tipo_donacion === "monetaria")
         .reduce((sum, d) => sum + parseFloat(d.monto || 0), 0);
@@ -47,7 +50,7 @@ const Admin = () => {
       setStats({
         usuarios: dataStats.usuarios || 0,
         mascotas: dataMascotas.length || 0,
-        solicitudes: dataStats.solicitudes || 0,
+        solicitudes: dataSolicitudes.length || 0,
         citas: dataCitas.length || 0,
         donaciones: dataDonaciones.length || 0,
         totalRecaudado: totalRecaudado.toFixed(2) 
