@@ -1,0 +1,688 @@
+/* =========================
+   PÁGINA GENERAL
+========================= */
+.info-citas-page {
+  background: #f9fafb;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* =========================
+   HERO SECTION
+========================= */
+.hero-citas {
+  height: 500px;
+  background: linear-gradient(135deg, rgba(85, 183, 165, 0.9), rgba(47, 143, 131, 0.9)),
+              url('https://images.unsplash.com/photo-1450778869180-41d0601e046e?w=1920') center/cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  color: white;
+  text-align: center;
+}
+
+.hero-overlay {
+  padding: 40px;
+  max-width: 800px;
+}
+
+.hero-citas h1 {
+  font-size: 48px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.hero-citas p {
+  font-size: 20px;
+  margin-bottom: 30px;
+  line-height: 1.6;
+  text-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
+}
+
+.btn-hero-citas {
+  padding: 18px 40px;
+  background: white;
+  color: var(--primary-green);
+  border: none;
+  border-radius: 50px;
+  font-size: 18px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+.btn-hero-citas:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.3);
+}
+
+/* =========================
+   TÍTULOS DE SECCIONES
+========================= */
+.section-title {
+  font-size: 36px;
+  color: var(--text-dark);
+  text-align: center;
+  margin-bottom: 15px;
+  font-weight: 700;
+}
+
+.section-subtitle {
+  text-align: center;
+  color: var(--text-gray);
+  font-size: 18px;
+  margin-bottom: 50px;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.7;
+}
+
+/* =========================
+   QUÉ ES UNA CITA
+========================= */
+.que-es-section {
+  padding: 80px 20px;
+  background: white;
+}
+
+.que-es-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+}
+
+.que-es-card {
+  background: #f9fafb;
+  padding: 35px 25px;
+  border-radius: var(--radius);
+  text-align: center;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+}
+
+.que-es-card:hover {
+  transform: translateY(-8px);
+  border-color: var(--primary-green);
+  box-shadow: 0 15px 40px rgba(85, 183, 165, 0.2);
+}
+
+.que-es-icon {
+  font-size: 60px;
+  margin-bottom: 20px;
+}
+
+.que-es-card h3 {
+  color: var(--text-dark);
+  font-size: 20px;
+  margin-bottom: 15px;
+  font-weight: 600;
+}
+
+.que-es-card p {
+  color: var(--text-gray);
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+/* =========================
+   TIMELINE - PROCESO
+========================= */
+.proceso-cita-section {
+  padding: 80px 20px;
+  background: #f9fafb;
+}
+
+.timeline {
+  max-width: 800px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 30px;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: linear-gradient(to bottom, var(--primary-green), var(--secondary-green));
+}
+
+.timeline-item {
+  display: flex;
+  gap: 30px;
+  margin-bottom: 40px;
+  position: relative;
+}
+
+.timeline-marker {
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(135deg, var(--primary-green), var(--secondary-green));
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  font-weight: 700;
+  flex-shrink: 0;
+  box-shadow: 0 4px 15px rgba(85, 183, 165, 0.4);
+  z-index: 1;
+}
+
+.timeline-content {
+  background: white;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  flex: 1;
+  border-left: 4px solid var(--primary-green);
+}
+
+.timeline-content h3 {
+  color: var(--text-dark);
+  font-size: 20px;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.timeline-content p {
+  color: var(--text-gray);
+  font-size: 15px;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* =========================
+   QUÉ ESPERAR
+========================= */
+.que-esperar-section {
+  padding: 80px 20px;
+  background: white;
+}
+
+.esperar-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 30px;
+}
+
+.esperar-item {
+  padding: 35px 30px;
+  border-radius: var(--radius);
+  border: 3px solid;
+}
+
+.esperar-item.positivo {
+  background: #ecfdf5;
+  border-color: #10b981;
+}
+
+.esperar-item.negativo {
+  background: #fef2f2;
+  border-color: #ef4444;
+}
+
+.esperar-icon {
+  font-size: 40px;
+  margin-bottom: 15px;
+}
+
+.esperar-item h4 {
+  font-size: 22px;
+  color: var(--text-dark);
+  margin-bottom: 20px;
+  font-weight: 700;
+}
+
+.esperar-item ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.esperar-item li {
+  padding: 10px 0;
+  color: var(--text-dark);
+  font-size: 15px;
+  line-height: 1.5;
+  padding-left: 30px;
+  position: relative;
+}
+
+.esperar-item.positivo li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: #10b981;
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.esperar-item.negativo li::before {
+  content: '✗';
+  position: absolute;
+  left: 0;
+  color: #ef4444;
+  font-weight: 700;
+  font-size: 18px;
+}
+
+/* =========================
+   CONSEJOS
+========================= */
+.consejos-section {
+  padding: 80px 20px;
+  background: linear-gradient(135deg, var(--primary-green), var(--secondary-green));
+  color: white;
+}
+
+.consejos-section .section-title {
+  color: white;
+}
+
+.consejos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
+}
+
+.consejo-card {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  padding: 30px 25px;
+  border-radius: var(--radius);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.consejo-card:hover {
+  transform: translateY(-5px);
+  background: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.consejo-numero {
+  position: absolute;
+  top: -15px;
+  right: 20px;
+  width: 40px;
+  height: 40px;
+  background: white;
+  color: var(--primary-green);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 18px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.consejo-card h3 {
+  font-size: 20px;
+  margin-bottom: 12px;
+  font-weight: 600;
+}
+
+.consejo-card p {
+  font-size: 15px;
+  line-height: 1.6;
+  opacity: 0.95;
+}
+
+/* =========================
+   HORARIOS
+========================= */
+.horarios-section {
+  padding: 80px 20px;
+  background: #f9fafb;
+}
+
+.horarios-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
+  margin-bottom: 30px;
+}
+
+.horario-card {
+  background: white;
+  padding: 30px 25px;
+  border-radius: var(--radius);
+  text-align: center;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  border: 3px solid var(--primary-green);
+}
+
+.horario-card.domingo {
+  border-color: #ef4444;
+  opacity: 0.7;
+}
+
+.horario-card h3 {
+  font-size: 22px;
+  color: var(--text-dark);
+  margin-bottom: 20px;
+  font-weight: 700;
+}
+
+.horario-tiempo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  margin: 15px 0;
+}
+
+.horario-icon {
+  font-size: 30px;
+}
+
+.horario-tiempo p {
+  font-size: 18px;
+  color: var(--text-dark);
+  font-weight: 600;
+  margin: 0;
+}
+
+.nota-horarios {
+  background: #fef3c7;
+  padding: 20px 25px;
+  border-radius: 12px;
+  border-left: 4px solid #f59e0b;
+  text-align: center;
+}
+
+.nota-horarios p {
+  margin: 0;
+  color: #92400e;
+  font-size: 15px;
+}
+
+/* =========================
+   REQUISITOS
+========================= */
+.requisitos-cita-section {
+  padding: 80px 20px;
+  background: white;
+}
+
+.requisitos-cita-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.requisito-cita-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 20px 25px;
+  background: #f0fdf9;
+  border-radius: 12px;
+  border: 2px solid #d1fae5;
+  transition: all 0.3s ease;
+}
+
+.requisito-cita-item:hover {
+  border-color: var(--primary-green);
+  transform: translateX(5px);
+}
+
+.requisito-check {
+  width: 35px;
+  height: 35px;
+  background: var(--primary-green);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 20px;
+  flex-shrink: 0;
+}
+
+.requisito-cita-item p {
+  margin: 0;
+  color: var(--text-dark);
+  font-size: 15px;
+  font-weight: 600;
+}
+
+/* =========================
+   POLÍTICA
+========================= */
+.politica-section {
+  padding: 80px 20px;
+  background: #f9fafb;
+}
+
+.politica-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 25px;
+}
+
+.politica-item {
+  background: white;
+  padding: 30px;
+  border-radius: var(--radius);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  border-top: 4px solid var(--primary-green);
+}
+
+.politica-item h4 {
+  font-size: 20px;
+  color: var(--text-dark);
+  margin-bottom: 15px;
+  font-weight: 700;
+}
+
+.politica-item p {
+  font-size: 15px;
+  color: var(--text-gray);
+  line-height: 1.7;
+  margin: 0;
+}
+
+.politica-item strong {
+  color: var(--primary-green);
+}
+
+/* =========================
+   FAQ
+========================= */
+.faq-section {
+  padding: 80px 20px;
+  background: white;
+}
+
+.faq-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 25px;
+}
+
+.faq-item {
+  background: #f9fafb;
+  padding: 25px;
+  border-radius: 12px;
+  border-left: 4px solid var(--primary-green);
+  transition: all 0.3s ease;
+}
+
+.faq-item:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(85, 183, 165, 0.15);
+}
+
+.faq-item h4 {
+  font-size: 17px;
+  color: var(--text-dark);
+  margin-bottom: 12px;
+  font-weight: 700;
+}
+
+.faq-item p {
+  font-size: 15px;
+  color: var(--text-gray);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* =========================
+   CTA FINAL
+========================= */
+.cta-final-citas {
+  padding: 80px 20px;
+  background: linear-gradient(135deg, var(--primary-green), var(--secondary-green));
+  text-align: center;
+  color: white;
+}
+
+.cta-content-citas h2 {
+  font-size: 40px;
+  margin-bottom: 15px;
+  font-weight: 700;
+}
+
+.cta-content-citas > p {
+  font-size: 20px;
+  margin-bottom: 30px;
+  opacity: 0.95;
+}
+
+.btn-cta-final-citas {
+  padding: 18px 50px;
+  background: white;
+  color: var(--primary-green);
+  border: none;
+  border-radius: 50px;
+  font-size: 20px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+  margin-bottom: 15px;
+}
+
+.btn-cta-final-citas:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.3);
+}
+
+.cta-note {
+  font-size: 14px;
+  opacity: 0.9;
+  margin-top: 10px;
+}
+
+/* =========================
+   BOTÓN VOLVER
+========================= */
+.btn-volver-home-citas {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  padding: 12px 24px;
+  background: white;
+  color: var(--primary-green);
+  border: 2px solid var(--primary-green);
+  border-radius: 25px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 1000;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.btn-volver-home-citas:hover {
+  background: var(--primary-green);
+  color: white;
+  transform: translateX(-5px);
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+@media (max-width: 768px) {
+  .hero-citas {
+    height: 400px;
+  }
+
+  .hero-citas h1 {
+    font-size: 32px;
+  }
+
+  .hero-citas p {
+    font-size: 16px;
+  }
+
+  .section-title {
+    font-size: 28px;
+  }
+
+  .section-subtitle {
+    font-size: 16px;
+  }
+
+  .timeline::before {
+    left: 20px;
+  }
+
+  .timeline-marker {
+    width: 40px;
+    height: 40px;
+    font-size: 18px;
+  }
+
+  .timeline-item {
+    gap: 20px;
+  }
+
+  .que-es-grid,
+  .consejos-grid,
+  .horarios-grid,
+  .requisitos-cita-grid,
+  .politica-content,
+  .faq-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .esperar-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .btn-volver-home-citas {
+    top: 10px;
+    left: 10px;
+    font-size: 12px;
+    padding: 10px 18px;
+  }
+}
+
+/* Eliminar espacio entre CTA y Footer */
+.info-citas-page {
+  margin-bottom: 0;
+}
+
+.cta-final-citas {
+  margin-bottom: 0;
+}
+
+.cta-note {
+  margin-bottom: 0;
+}

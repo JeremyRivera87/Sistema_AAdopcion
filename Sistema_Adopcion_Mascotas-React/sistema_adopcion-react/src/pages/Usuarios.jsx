@@ -111,7 +111,7 @@ const Usuarios = () => {
 
           <div className="buttons">
             <button className="btn" onClick={() => navigate("/info-mascotas")}>Ver Mascotas</button>
-            <button className="btn" onClick={handleAgendarCita}>Agendar Cita</button>
+            <button className="btn" onClick={() => navigate("/info-citas")}>Agendar Cita</button> 
             <button className="btn" onClick={() => navigate("/donaciones")}>Donaciones</button>
           </div>
         </section>
