@@ -5,6 +5,7 @@ const authRoutes = require("./routes/auth");
 const mascotasRoutes = require("./routes/mascotas");
 const solicitudesRoutes = require('./routes/solicitudes');
 const citasRoutes = require('./routes/citas');
+const historialRoutes = require('./routes/historial');
 const donacionesRoutes = require('./routes/donaciones')
 
 
@@ -27,4 +28,5 @@ app.use("/api/admin", require("./routes/admin"));
 app.use("/api/mascotas", mascotasRoutes);
 app.use('/api/solicitudes', solicitudesRoutes);
 app.use('/api/citas', citasRoutes);
+app.use('/api/historial', historialRoutes);
 app.use('/api/donaciones', donacionesRoutes);

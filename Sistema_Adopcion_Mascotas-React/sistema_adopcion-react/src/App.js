@@ -10,6 +10,7 @@ import ForgotPassword from "./pages/ForgotPassword";
 import InformacionMascotas from './pages/InformacionMascotas';
 import Mascotas from "./pages/Mascotas";
 import DetalleMascota from './pages/DetalleMascota';
+import AdminHistorialMedico from './pages/AdminHistorialMedico';
 import FormularioAdopcion from './pages/FormularioAdopcion';
 import DetalleSolicitud from './pages/DetalleSolicitud';
 import AdminSolicitudes from './pages/AdminSolicitudes';
@@ -42,6 +43,7 @@ function App() {
         <Route path="/forgot-password" element={<ForgotPassword />} />
         <Route path="/info-mascotas" element={<InformacionMascotas />} />
         <Route path="/Mascotas" element={<Mascotas />} />
+        <Route path="/admin/historial/:mascota_id" element={<AdminHistorialMedico />} />
         <Route path="/mascota/:id" element={<DetalleMascota />} />
         <Route path="/adoptar/:id" element={<FormularioAdopcion />} />
         <Route path="/admin/solicitudes" element={<AdminSolicitudes />} />

@@ -16,6 +16,11 @@ const Admin = () => {
   });
 
   const [cargando, setCargando] = useState(true);
+  
+  // ← NUEVO: Estado para modal de selección de mascota
+  const [modalMascotasAbierto, setModalMascotasAbierto] = useState(false);
+  const [mascotas, setMascotas] = useState([]);
+  const [loadingMascotas, setLoadingMascotas] = useState(false);
 
   const cargarEstadisticas = async () => {
     setCargando(true);
@@ -38,14 +43,6 @@ const Admin = () => {
       const totalRecaudado = dataDonaciones
         .filter(d => d.tipo_donacion === "monetaria")
         .reduce((sum, d) => sum + parseFloat(d.monto || 0), 0);
-
-      console.log("📊 Estadísticas cargadas:", {
-        usuarios: dataStats.usuarios,
-        mascotas: dataMascotas.length,
-        citas: dataCitas.length,
-        donaciones: dataDonaciones.length,
-        totalRecaudado: totalRecaudado
-      });
 
       setStats({
         usuarios: dataStats.usuarios || 0,
@@ -73,6 +70,28 @@ const Admin = () => {
     cargarEstadisticas();
   }, [location, navigate]);
 
+  // ← NUEVO: Abrir modal y cargar mascotas
+  const abrirSelectorMascotas = async () => {
+    setModalMascotasAbierto(true);
+    setLoadingMascotas(true);
+    
+    try {
+      const res = await fetch("http://localhost:4000/api/mascotas");
+      const data = await res.json();
+      setMascotas(data);
+    } catch (error) {
+      console.error("Error al cargar mascotas:", error);
+    } finally {
+      setLoadingMascotas(false);
+    }
+  };
+
+  // ← NUEVO: Seleccionar mascota y navegar
+  const seleccionarMascota = (mascotaId) => {
+    setModalMascotasAbierto(false);
+    navigate(`/admin/historial/${mascotaId}`);
+  };
+
   const cerrarSesion = () => {
     localStorage.removeItem("usuario");
     navigate("/login");
@@ -93,7 +112,7 @@ const Admin = () => {
           <a onClick={() => navigate("/admin/solicitudes")} style={{ cursor: "pointer" }}>📄 Solicitudes</a>
           <a onClick={() => navigate("/admin/citas")} style={{ cursor: "pointer" }}>📅 Citas</a>
           <a onClick={() => navigate("/admin/donaciones")} style={{ cursor: "pointer" }}>💰 Donaciones</a>
-          <a onClick={() => navigate("/admin/historial")} style={{ cursor: "pointer" }}>🩺 Historial Médico</a>
+          <a onClick={abrirSelectorMascotas} style={{ cursor: "pointer" }}>🩺 Historial Médico</a>
 
           <a className="logout" onClick={cerrarSesion} style={{ cursor: "pointer" }}>
             🚪 Cerrar sesión
@@ -159,7 +178,7 @@ const Admin = () => {
             <button className="btn" onClick={() => navigate("/admin/citas")}>
               Citas Programadas
             </button>
-            <button className="btn" onClick={() => navigate("/admin/historial")}>
+            <button className="btn" onClick={abrirSelectorMascotas}>
               Historial Médico
             </button>
             <button className="btn" onClick={() => navigate("/admin/donaciones")}>
@@ -168,6 +187,68 @@ const Admin = () => {
           </div>
         </section>
       </main>
+
+      {/* ← NUEVO: MODAL SELECTOR DE MASCOTAS */}
+      {modalMascotasAbierto && (
+        <div className="modal-overlay-selector" onClick={() => setModalMascotasAbierto(false)}>
+          <div className="modal-content-selector" onClick={(e) => e.stopPropagation()}>
+            <div className="modal-header-selector">
+              <h2>Selecciona una Mascota</h2>
+              <button 
+                className="btn-cerrar-modal-selector" 
+                onClick={() => setModalMascotasAbierto(false)}
+              >
+                ✕
+              </button>
+            </div>
+
+            <div className="modal-body-selector">
+              {loadingMascotas ? (
+                <div className="loading-selector">
+                  <div className="loader-spinner"></div>
+                  <p>Cargando mascotas...</p>
+                </div>
+              ) : mascotas.length === 0 ? (
+                <div className="sin-mascotas-selector">
+                  <p>No hay mascotas registradas</p>
+                  <button onClick={() => {
+                    setModalMascotasAbierto(false);
+                    navigate("/admin/mascotas");
+                  }}>
+                    Agregar Mascota
+                  </button>
+                </div>
+              ) : (
+                <div className="mascotas-grid-selector">
+                  {mascotas.map((mascota) => (
+                    <div 
+                      key={mascota.id} 
+                      className="mascota-card-selector"
+                      onClick={() => seleccionarMascota(mascota.id)}
+                    >
+                      <div className="mascota-foto-selector">
+                        {mascota.foto_url ? (
+                          <img 
+                            src={`http://localhost:4000${mascota.foto_url}`} 
+                            alt={mascota.nombre}
+                          />
+                        ) : (
+                          <div className="sin-foto-selector">🐾</div>
+                        )}
+                      </div>
+                      <div className="mascota-info-selector">
+                        <h3>{mascota.nombre}</h3>
+                        <p>{mascota.especie} • {mascota.raza || "Mestizo"}</p>
+                        <span className="ver-historial-btn">Ver Historial →</span>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

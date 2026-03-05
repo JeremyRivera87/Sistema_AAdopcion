@@ -1,18 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import CustomAlert from "../components/CustomAlert";
 import "../styles/AgendarCitas.css";
 
 const AgendarCita = () => {
   const navigate = useNavigate();
-  // 🔹 Verificar sesión al cargar el componente
-  useEffect(() => {
-    const usuario = JSON.parse(localStorage.getItem("usuario"));
-    
-    if (!usuario) {
-      alert("Debes iniciar sesión o registrarse para agendar una cita");
-      navigate("/login");
-    }
-  }, [navigate]);
   const [mascotas, setMascotas] = useState([]);
   const [form, setForm] = useState({
     mascota_id: "",
@@ -22,6 +14,28 @@ const AgendarCita = () => {
     notas: ""
   });
   const [loading, setLoading] = useState(false);
+  
+  // ← NUEVO: Estado para alertas
+  const [alert, setAlert] = useState({
+    isOpen: false,
+    title: "",
+    message: "",
+    type: "info"
+  });
+
+  // 🔹 Verificar sesión al cargar el componente
+  useEffect(() => {
+    const usuario = JSON.parse(localStorage.getItem("usuario"));
+    
+    if (!usuario) {
+      setAlert({
+        isOpen: true,
+        title: "Sesión requerida",
+        message: "Debes iniciar sesión o registrarte para agendar una cita",
+        type: "warning"
+      });
+    }
+  }, [navigate]);
 
   // 🔹 Cargar mascotas disponibles
   useEffect(() => {
@@ -51,12 +65,16 @@ const AgendarCita = () => {
     setLoading(true);
 
     try {
-      // Obtener usuario del localStorage
       const usuario = JSON.parse(localStorage.getItem("usuario"));
       
       if (!usuario) {
-        alert("Debes iniciar sesión para agendar una cita");
-        navigate("/login");
+        setAlert({
+          isOpen: true,
+          title: "Sesión requerida",
+          message: "Debes iniciar sesión para agendar una cita",
+          type: "warning"
+        });
+        setLoading(false);
         return;
       }
 
@@ -76,7 +94,12 @@ const AgendarCita = () => {
       });
 
       if (response.ok) {
-        alert("¡Cita agendada exitosamente! Te contactaremos pronto.");
+        setAlert({
+          isOpen: true,
+          title: "¡Cita Agendada!",
+          message: "Tu cita ha sido agendada exitosamente. Te contactaremos pronto.",
+          type: "success"
+        });
         setForm({
           mascota_id: "",
           fecha: "",
@@ -84,16 +107,37 @@ const AgendarCita = () => {
           motivo: "",
           notas: ""
         });
-        navigate("/mis-citas"); // O la ruta que prefieras
       } else {
         const error = await response.json();
-        alert(error.message || "Error al agendar la cita");
+        setAlert({
+          isOpen: true,
+          title: "Error",
+          message: error.message || "Error al agendar la cita",
+          type: "error"
+        });
       }
     } catch (error) {
       console.error("Error al agendar cita:", error);
-      alert("Error de conexión con el servidor");
+      setAlert({
+        isOpen: true,
+        title: "Error de conexión",
+        message: "No se pudo conectar con el servidor",
+        type: "error"
+      });
     } finally {
       setLoading(false);
+    }
+  };
+
+  // ← NUEVO: Manejar cierre de alerta
+  const handleCloseAlert = () => {
+    setAlert({ ...alert, isOpen: false });
+    
+    // Si era alerta de sesión o éxito, redirigir
+    if (alert.type === "warning" && alert.title === "Sesión requerida") {
+      navigate("/login");
+    } else if (alert.type === "success") {
+      navigate("/"); // O a donde quieras después de agendar
     }
   };
 
@@ -209,6 +253,15 @@ const AgendarCita = () => {
           </div>
         </form>
       </div>
+
+      {/* Componente de Alerta */}
+      <CustomAlert
+        isOpen={alert.isOpen}
+        onClose={handleCloseAlert}
+        title={alert.title}
+        message={alert.message}
+        type={alert.type}
+      />
     </div>
   );
 };
