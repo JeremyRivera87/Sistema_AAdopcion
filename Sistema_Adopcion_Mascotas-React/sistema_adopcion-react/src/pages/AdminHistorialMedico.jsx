@@ -243,14 +243,26 @@ const AdminHistorialMedico = () => {
   };
 
   const formatearFecha = (fecha) => {
-    if (!fecha) return "Sin fecha";
-    const date = new Date(fecha + 'T00:00:00');
-    return date.toLocaleDateString('es-EC', {
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric'
-    });
-  };
+  if (!fecha) return "Sin fecha";
+  
+  try {
+    // Dividir la fecha "YYYY-MM-DD"
+    const partes = fecha.split('T')[0].split('-');
+    if (partes.length !== 3) return "Fecha no disponible";
+    
+    const [año, mes, dia] = partes;
+    
+    const meses = [
+      'enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio',
+      'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'
+    ];
+    
+    return `${parseInt(dia)} de ${meses[parseInt(mes) - 1]} de ${año}`;
+  } catch (error) {
+    console.error("Error al formatear fecha:", error);
+    return "Fecha no disponible";
+  }
+};
 
   const handleCloseAlert = () => {
     setAlert({ ...alert, isOpen: false });
