@@ -2,6 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const path = require('path');
 const authRoutes = require("./routes/auth");
+const usuariosRoutes = require('./routes/usuarios');
 const avisosRoutes = require('./routes/avisos');
 const mascotasRoutes = require("./routes/mascotas");
 const solicitudesRoutes = require('./routes/solicitudes');
@@ -26,6 +27,7 @@ app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 app.use("/api", authRoutes);
 app.use("/api/admin", require("./routes/admin"));
+app.use('/api/usuarios', usuariosRoutes);
 app.use('/api/avisos', avisosRoutes);
 app.use("/api/mascotas", mascotasRoutes);
 app.use('/api/solicitudes', solicitudesRoutes);

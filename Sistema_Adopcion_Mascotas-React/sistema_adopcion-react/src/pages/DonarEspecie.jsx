@@ -75,7 +75,7 @@ const DonarEspecie = () => {
       
       formData.append("nombre_donante", form.nombre_donante);
       formData.append("email_donante", form.email_donante);
-      formData.append("monto", 0); // Para donaciones en especie, monto es 0
+      formData.append("monto", 0); 
       formData.append("tipo_donacion", form.tipo_donacion);
       formData.append("metodo_pago", "especie");
       
@@ -146,8 +146,8 @@ Mensaje adicional: ${form.mensaje}
   return (
     <div className="donar-especie-container">
       <div className="donar-especie-content">
-        <button className="btn-atras" onClick={() => navigate("/seleccionar-donacion")}>
-          ← Cambiar tipo de donación
+        <button className="btn-atras" onClick={() => navigate("/donaciones")}>
+          ← Volver a Información 
         </button>
 
         <div className="header">

@@ -133,8 +133,8 @@ const Donar = () => {
   return (
     <div className="donar-container">
       <div className="donar-content">
-        <button className="btn-atras" onClick={() => navigate("/seleccionar-donacion")}>
-          ← Cambiar tipo de donación
+        <button className="btn-atras" onClick={() => navigate("/donaciones")}>
+          ← Volver a Información 
         </button>
 
         <div className="donar-header">
