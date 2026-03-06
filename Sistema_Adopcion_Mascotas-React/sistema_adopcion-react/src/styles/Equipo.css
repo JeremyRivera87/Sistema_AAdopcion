@@ -1,0 +1,624 @@
+/* =========================
+   EQUIPO PAGE
+========================= */
+.equipo-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: #f4f6f8;
+}
+
+.equipo-container {
+  flex: 1;
+}
+
+/* =========================
+   HERO SECTION
+========================= */
+.hero-equipo {
+  background: linear-gradient(135deg, var(--primary-green), var(--secondary-green));
+  padding: 100px 40px 80px;
+  text-align: center;
+  color: white;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-equipo::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100px;
+  background: linear-gradient(to bottom, transparent, rgba(244, 246, 248, 0.3));
+}
+
+.hero-equipo-content {
+  max-width: 800px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.hero-equipo h1 {
+  font-size: 52px;
+  font-weight: 800;
+  margin: 0 0 20px 0;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.hero-equipo-subtitle {
+  font-size: 20px;
+  line-height: 1.6;
+  opacity: 0.95;
+  margin: 0;
+}
+
+/* =========================
+   INTRODUCCIÓN
+========================= */
+.intro-equipo {
+  padding: 80px 40px;
+  background: white;
+}
+
+.intro-content {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.intro-content h2 {
+  font-size: 38px;
+  color: var(--text-dark);
+  margin: 0 0 15px 0;
+  font-weight: 700;
+}
+
+.intro-line {
+  width: 100px;
+  height: 4px;
+  background: linear-gradient(135deg, var(--primary-green), var(--secondary-green));
+  margin: 0 auto 30px;
+  border-radius: 2px;
+}
+
+.intro-content p {
+  font-size: 18px;
+  line-height: 1.8;
+  color: var(--text-gray);
+  margin: 0;
+}
+
+/* =========================
+   SECCIONES DE EQUIPO
+========================= */
+.section-equipo {
+  padding: 80px 40px;
+}
+
+.section-equipo.directivo {
+  background: linear-gradient(135deg, rgba(85, 183, 165, 0.05), rgba(47, 143, 131, 0.02));
+}
+
+.section-equipo.veterinario {
+  background: white;
+}
+
+.section-equipo.voluntarios {
+  background: linear-gradient(135deg, rgba(85, 183, 165, 0.08), rgba(47, 143, 131, 0.04));
+}
+
+.section-header-equipo {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.section-header-equipo h2 {
+  font-size: 38px;
+  color: var(--text-dark);
+  margin: 0 0 10px 0;
+  font-weight: 700;
+}
+
+.section-header-equipo p {
+  font-size: 18px;
+  color: var(--text-gray);
+  margin: 0;
+}
+
+/* =========================
+   GRID DE MIEMBROS
+========================= */
+.equipo-grid {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 40px;
+}
+
+.miembro-card {
+  background: white;
+  border-radius: var(--radius);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+}
+
+.miembro-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 12px 30px rgba(85, 183, 165, 0.2);
+  border-color: var(--primary-green);
+}
+
+.miembro-imagen {
+  background: linear-gradient(135deg, var(--primary-green), var(--secondary-green));
+  padding: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 200px;
+}
+
+.avatar-emoji {
+  font-size: 100px;
+  background: white;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+.miembro-info {
+  padding: 30px;
+  text-align: center;
+}
+
+.miembro-info h3 {
+  font-size: 24px;
+  color: var(--text-dark);
+  margin: 0 0 10px 0;
+  font-weight: 700;
+}
+
+.cargo {
+  font-size: 16px;
+  color: var(--primary-green);
+  font-weight: 600;
+  margin: 0 0 15px 0;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.descripcion {
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--text-gray);
+  margin: 0;
+}
+
+/* =========================
+   DEPARTAMENTOS
+========================= */
+.departamentos-section {
+  padding: 80px 40px;
+  background: white;
+}
+
+.departamentos-section h2 {
+  font-size: 38px;
+  color: var(--text-dark);
+  text-align: center;
+  margin: 0 0 60px 0;
+  font-weight: 700;
+}
+
+.departamentos-grid {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 30px;
+}
+
+.departamento-card {
+  background: white;
+  padding: 40px 30px;
+  border-radius: var(--radius);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  border-left: 4px solid var(--primary-green);
+  transition: all 0.3s ease;
+}
+
+.departamento-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 30px rgba(85, 183, 165, 0.2);
+}
+
+.dep-icon {
+  font-size: 50px;
+  margin-bottom: 20px;
+}
+
+.departamento-card h3 {
+  font-size: 24px;
+  color: var(--text-dark);
+  margin: 0 0 15px 0;
+  font-weight: 700;
+}
+
+.departamento-card p {
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--text-gray);
+  margin: 0 0 20px 0;
+}
+
+.departamento-card ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.departamento-card ul li {
+  font-size: 14px;
+  color: var(--text-gray);
+  padding-left: 25px;
+  position: relative;
+}
+
+.departamento-card ul li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: var(--primary-green);
+  font-weight: 700;
+  font-size: 16px;
+}
+
+/* =========================
+   VOLUNTARIOS CONTENT
+========================= */
+.voluntarios-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 50px;
+  align-items: center;
+}
+
+.voluntarios-stats {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.vol-stat {
+  background: white;
+  padding: 30px;
+  border-radius: var(--radius);
+  text-align: center;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  border: 2px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.vol-stat:hover {
+  border-color: var(--primary-green);
+  transform: scale(1.05);
+  box-shadow: 0 8px 25px rgba(85, 183, 165, 0.2);
+}
+
+.vol-number {
+  font-size: 48px;
+  font-weight: 800;
+  color: var(--primary-green);
+  margin-bottom: 10px;
+}
+
+.vol-stat p {
+  font-size: 16px;
+  color: var(--text-dark);
+  margin: 0;
+  font-weight: 600;
+}
+
+.voluntarios-descripcion {
+  background: white;
+  padding: 40px;
+  border-radius: var(--radius);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.voluntarios-descripcion p {
+  font-size: 17px;
+  line-height: 1.8;
+  color: var(--text-gray);
+  margin: 0 0 20px 0;
+}
+
+.btn-voluntario {
+  padding: 16px 40px;
+  background: linear-gradient(135deg, var(--primary-green), var(--secondary-green));
+  color: white;
+  border: none;
+  border-radius: var(--radius);
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 700;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(85, 183, 165, 0.3);
+  font-family: inherit;
+  margin-top: 10px;
+}
+
+.btn-voluntario:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(85, 183, 165, 0.4);
+}
+
+/* =========================
+   TESTIMONIOS
+========================= */
+.testimonios-equipo {
+  padding: 80px 40px;
+  background: white;
+}
+
+.testimonios-equipo h2 {
+  font-size: 38px;
+  color: var(--text-dark);
+  text-align: center;
+  margin: 0 0 60px 0;
+  font-weight: 700;
+}
+
+.testimonios-grid {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 30px;
+}
+
+.testimonio-card {
+  background: linear-gradient(135deg, rgba(85, 183, 165, 0.05), rgba(47, 143, 131, 0.02));
+  padding: 40px 35px;
+  border-radius: var(--radius);
+  border-left: 4px solid var(--primary-green);
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.testimonio-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(85, 183, 165, 0.15);
+}
+
+.comillas {
+  font-size: 60px;
+  color: var(--primary-green);
+  opacity: 0.3;
+  line-height: 1;
+  margin-bottom: 10px;
+  font-family: Georgia, serif;
+}
+
+.testimonio-text {
+  font-size: 16px;
+  line-height: 1.8;
+  color: var(--text-gray);
+  margin: 0 0 25px 0;
+  font-style: italic;
+}
+
+.testimonio-autor {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.testimonio-autor strong {
+  font-size: 16px;
+  color: var(--text-dark);
+  font-weight: 700;
+}
+
+.testimonio-autor span {
+  font-size: 14px;
+  color: var(--primary-green);
+  font-weight: 600;
+}
+
+/* =========================
+   CALL TO ACTION
+========================= */
+.cta-equipo {
+  padding: 80px 40px;
+  background: linear-gradient(135deg, var(--primary-green), var(--secondary-green));
+  text-align: center;
+  color: white;
+}
+
+.cta-equipo-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.cta-equipo h2 {
+  font-size: 38px;
+  margin: 0 0 15px 0;
+  font-weight: 700;
+}
+
+.cta-equipo p {
+  font-size: 20px;
+  margin: 0 0 40px 0;
+  opacity: 0.95;
+}
+
+.cta-equipo-buttons {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.cta-equipo-btn {
+  padding: 16px 40px;
+  border: none;
+  border-radius: var(--radius);
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 700;
+  transition: all 0.3s ease;
+  font-family: inherit;
+}
+
+.cta-equipo-btn.primary {
+  background: white;
+  color: var(--primary-green);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.cta-equipo-btn.primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+.cta-equipo-btn.secondary {
+  background: transparent;
+  color: white;
+  border: 2px solid white;
+}
+
+.cta-equipo-btn.secondary:hover {
+  background: white;
+  color: var(--primary-green);
+  transform: translateY(-3px);
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+@media (max-width: 1024px) {
+  .hero-equipo {
+    padding: 80px 30px 60px;
+  }
+
+  .intro-equipo,
+  .section-equipo,
+  .departamentos-section,
+  .testimonios-equipo,
+  .cta-equipo {
+    padding: 60px 30px;
+  }
+
+  .equipo-grid {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+  }
+
+  .departamentos-grid {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  }
+
+  .voluntarios-content {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-equipo {
+    padding: 60px 20px 50px;
+  }
+
+  .hero-equipo h1 {
+    font-size: 36px;
+  }
+
+  .hero-equipo-subtitle {
+    font-size: 18px;
+  }
+
+  .intro-equipo,
+  .section-equipo,
+  .departamentos-section,
+  .testimonios-equipo,
+  .cta-equipo {
+    padding: 50px 20px;
+  }
+
+  .intro-content h2,
+  .section-header-equipo h2,
+  .departamentos-section h2,
+  .testimonios-equipo h2,
+  .cta-equipo h2 {
+    font-size: 32px;
+  }
+
+  .equipo-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .departamentos-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .testimonios-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .cta-equipo-buttons {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .cta-equipo-btn {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-equipo h1 {
+    font-size: 28px;
+  }
+
+  .hero-equipo-subtitle {
+    font-size: 16px;
+  }
+
+  .intro-content h2,
+  .section-header-equipo h2,
+  .departamentos-section h2,
+  .testimonios-equipo h2,
+  .cta-equipo h2 {
+    font-size: 26px;
+  }
+
+  .avatar-emoji {
+    font-size: 80px;
+    width: 120px;
+    height: 120px;
+  }
+
+  .miembro-imagen {
+    padding: 30px;
+    min-height: 180px;
+  }
+
+  .vol-number {
+    font-size: 36px;
+  }
+}

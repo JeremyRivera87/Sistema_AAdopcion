@@ -2,6 +2,10 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { useState, useEffect } from "react";
 import Loader from "./components/Loader";
 import Usuarios from "./pages/Usuarios";
+import QuienesSomos from './pages/QuienesSomos';
+import MisionVision from './pages/MisionVision';
+import Equipo from './pages/Equipo';
+
 import Perfil from "./pages/Perfil";
 import AdminAvisos from './pages/AdminAvisos';
 import Admin from "./pages/Admin";
@@ -38,6 +42,10 @@ function App() {
       <Routes>
         <Route path="/" element={<Usuarios />} />
         <Route path="/admin" element={<Admin />} />
+        <Route path="/quienes-somos" element={<QuienesSomos />} />
+        <Route path="/mision-vision" element={<MisionVision />} />
+        <Route path="/equipo" element={<Equipo />} />
+
         <Route path="/Login" element={<Login />} />
         <Route path="/admin/avisos" element={<AdminAvisos />} />
         <Route path="/register" element={<Register />} />
