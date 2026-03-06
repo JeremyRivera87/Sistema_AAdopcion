@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import Loader from "./components/Loader";
 import Usuarios from "./pages/Usuarios";
 import Perfil from "./pages/Perfil";
+import AdminAvisos from './pages/AdminAvisos';
 import Admin from "./pages/Admin";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
@@ -38,6 +39,7 @@ function App() {
         <Route path="/" element={<Usuarios />} />
         <Route path="/admin" element={<Admin />} />
         <Route path="/Login" element={<Login />} />
+        <Route path="/admin/avisos" element={<AdminAvisos />} />
         <Route path="/register" element={<Register />} />
         <Route path="/perfil" element={<Perfil />} />
         <Route path="/forgot-password" element={<ForgotPassword />} />

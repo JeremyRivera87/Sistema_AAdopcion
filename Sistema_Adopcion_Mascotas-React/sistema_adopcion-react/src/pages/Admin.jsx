@@ -113,6 +113,7 @@ const Admin = () => {
           <a onClick={() => navigate("/admin/citas")} style={{ cursor: "pointer" }}>📅 Citas</a>
           <a onClick={() => navigate("/admin/donaciones")} style={{ cursor: "pointer" }}>💰 Donaciones</a>
           <a onClick={abrirSelectorMascotas} style={{ cursor: "pointer" }}>🩺 Historial Médico</a>
+          <a onClick={() => navigate("/admin/avisos")} style={{ cursor: "pointer" }}>📢 Avisos Carousel</a> 
 
           <a className="logout" onClick={cerrarSesion} style={{ cursor: "pointer" }}>
             🚪 Cerrar sesión
