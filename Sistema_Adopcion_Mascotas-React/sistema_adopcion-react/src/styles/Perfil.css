@@ -119,6 +119,52 @@
 }
 
 /* =========================
+   TOP BAR
+========================= */
+.perfil-top-bar {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+}
+
+.btn-volver-inicio {
+  padding: 12px 24px;
+  background: white;
+  color: var(--primary-green);
+  border: 2px solid var(--primary-green);
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-volver-inicio:hover {
+  background: var(--primary-green);
+  color: white;
+  transform: translateX(-5px);
+  box-shadow: 0 6px 20px rgba(85, 183, 165, 0.3);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .perfil-top-bar {
+    top: 10px;
+    right: 10px;
+  }
+
+  .btn-volver-inicio {
+    padding: 10px 18px;
+    font-size: 13px;
+  }
+}
+
+/* =========================
    CONTENIDO PRINCIPAL
 ========================= */
 .perfil-content {

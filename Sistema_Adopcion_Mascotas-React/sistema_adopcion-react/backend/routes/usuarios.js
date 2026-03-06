@@ -11,7 +11,7 @@ router.get('/:id', async (req, res) => {
     const { id } = req.params;
     
     const result = await pool.query(
-      'SELECT id, nombre, cedula, edad, email, telefono, direccion, rol, created_at FROM usuarios WHERE id = $1',
+      'SELECT id, nombre, cedula, edad, email, telefono, direccion, rol FROM usuarios WHERE id = $1',
       [id]
     );
 

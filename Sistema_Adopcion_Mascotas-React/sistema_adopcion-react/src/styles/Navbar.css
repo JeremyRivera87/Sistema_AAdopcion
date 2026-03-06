@@ -1,0 +1,424 @@
+/* =========================
+   NAVBAR PRINCIPAL
+========================= */
+.navbar {
+  background: white;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.navbar-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 80px;
+}
+
+/* =========================
+   LOGO
+========================= */
+.navbar-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.navbar-logo:hover {
+  transform: scale(1.05);
+}
+
+.logo-icon {
+  font-size: 36px;
+}
+
+.logo-text {
+  font-size: 26px;
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--primary-green), var(--secondary-green));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* =========================
+   MENÚ HAMBURGUESA (móvil)
+========================= */
+.navbar-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+}
+
+.navbar-toggle span {
+  width: 28px;
+  height: 3px;
+  background: var(--primary-green);
+  border-radius: 3px;
+  transition: all 0.3s ease;
+}
+
+.navbar-toggle:hover span {
+  background: var(--secondary-green);
+}
+
+/* =========================
+   MENÚ PRINCIPAL
+========================= */
+.navbar-menu {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar-menu > li {
+  position: relative;
+}
+
+.navbar-menu > li > a {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 12px 20px;
+  color: var(--text-dark);
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-radius: 8px;
+  white-space: nowrap;
+}
+
+.navbar-menu > li > a:hover {
+  background: #f0fdf9;
+  color: var(--primary-green);
+}
+
+.arrow {
+  font-size: 10px;
+  transition: transform 0.3s ease;
+}
+
+.menu-desplegable:hover .arrow {
+  transform: rotate(180deg);
+}
+
+/* =========================
+   MEGA MENÚ
+========================= */
+.mega-menu {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: white;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+  border-radius: var(--radius);
+  margin-top: 10px;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  min-width: 600px;
+  z-index: 9999;
+}
+
+.menu-desplegable:hover .mega-menu {
+  opacity: 1;
+  visibility: visible;
+  margin-top: 15px;
+}
+
+.mega-menu-content {
+  display: grid;
+  gap: 30px;
+  padding: 30px;
+}
+
+/* Menú Nosotros (2 columnas) */
+.nosotros-menu .mega-menu-content {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+/* Menú Servicios (3 columnas) */
+.servicios-menu .mega-menu-content {
+  grid-template-columns: repeat(3, 1fr);
+  min-width: 800px;
+}
+
+/* Menú Contacto (2 columnas) */
+.contacto-menu .mega-menu-content {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.mega-menu-column h3 {
+  font-size: 14px;
+  color: var(--primary-green);
+  text-transform: uppercase;
+  margin: 0 0 15px 0;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid var(--primary-green);
+}
+
+.mega-menu-column ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.mega-menu-column ul li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.mega-menu-column ul li:hover {
+  background: #f0fdf9;
+  transform: translateX(5px);
+}
+
+.mega-menu-column ul li .icon {
+  font-size: 24px;
+  min-width: 24px;
+  text-align: center;
+}
+
+.mega-menu-column ul li div {
+  flex: 1;
+}
+
+.mega-menu-column ul li strong {
+  display: block;
+  font-size: 14px;
+  color: var(--text-dark);
+  margin-bottom: 3px;
+  font-weight: 600;
+}
+
+.mega-menu-column ul li p {
+  font-size: 12px;
+  color: var(--text-gray);
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* =========================
+   BOTONES ESPECIALES
+========================= */
+.btn-login {
+  background: linear-gradient(135deg, var(--primary-green), var(--secondary-green)) !important;
+  color: white !important;
+  padding: 10px 24px !important;
+  border-radius: 25px !important;
+  box-shadow: 0 4px 15px rgba(85, 183, 165, 0.3) !important;
+}
+
+.btn-login:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 6px 20px rgba(85, 183, 165, 0.4) !important;
+}
+
+.btn-logout {
+  color: #ef4444 !important;
+}
+
+.btn-logout:hover {
+  background: #fee2e2 !important;
+  color: #dc2626 !important;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+@media (max-width: 1024px) {
+  .navbar-container {
+    padding: 0 20px;
+  }
+
+  .navbar-menu {
+    gap: 0;
+  }
+
+  .navbar-menu > li > a {
+    padding: 10px 15px;
+    font-size: 14px;
+  }
+
+  .servicios-menu .mega-menu-content {
+    grid-template-columns: repeat(2, 1fr);
+    min-width: 500px;
+  }
+
+  .mega-menu {
+    min-width: 500px;
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar-toggle {
+    display: flex;
+  }
+
+  .navbar-menu {
+    position: fixed;
+    top: 80px;
+    left: 0;
+    right: 0;
+    background: white;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+  }
+
+  .navbar-menu.active {
+    max-height: calc(100vh - 80px);
+    overflow-y: auto;
+  }
+
+  .navbar-menu > li {
+    border-bottom: 1px solid #e5e7eb;
+  }
+
+  .navbar-menu > li > a {
+    padding: 16px 20px;
+    border-radius: 0;
+  }
+
+  .mega-menu {
+    position: static;
+    transform: none;
+    box-shadow: none;
+    margin-top: 0;
+    min-width: auto;
+    opacity: 1;
+    visibility: visible;
+    display: none;
+    border-top: 2px solid var(--primary-green);
+    background: #f9fafb;
+  }
+
+  .menu-desplegable.active .mega-menu {
+    display: block;
+  }
+
+  .mega-menu-content {
+    grid-template-columns: 1fr !important;
+    padding: 20px;
+    gap: 20px;
+  }
+
+  .servicios-menu .mega-menu-content,
+  .nosotros-menu .mega-menu-content,
+  .contacto-menu .mega-menu-content {
+    min-width: auto;
+  }
+
+  .mega-menu-column h3 {
+    font-size: 13px;
+  }
+
+  .mega-menu-column ul li {
+    padding: 10px;
+  }
+
+  .mega-menu-column ul li:hover {
+    transform: none;
+  }
+
+  .mega-menu-column ul li strong {
+    font-size: 13px;
+  }
+
+  .mega-menu-column ul li p {
+    font-size: 11px;
+  }
+
+  /* En móvil, los menús se expanden al hacer click */
+  .menu-desplegable > a {
+    justify-content: space-between;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar-container {
+    height: 70px;
+    padding: 0 15px;
+  }
+
+  .logo-icon {
+    font-size: 28px;
+  }
+
+  .logo-text {
+    font-size: 20px;
+  }
+
+  .navbar-menu {
+    top: 70px;
+  }
+
+  .mega-menu-content {
+    padding: 15px;
+  }
+
+  .mega-menu-column ul li .icon {
+    font-size: 20px;
+  }
+}
+
+/* =========================
+   ANIMACIONES
+========================= */
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+.mega-menu {
+  animation: fadeInDown 0.3s ease;
+}
+
+/* =========================
+   OVERLAY PARA CERRAR MENÚS
+========================= */
+.menu-desplegable:hover::before {
+  content: '';
+  position: fixed;
+  top: 80px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: transparent;
+  z-index: 999;
+}

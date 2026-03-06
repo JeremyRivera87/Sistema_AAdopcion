@@ -1,6 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import "../styles/InformacionDonaciones.css";
+import Footer from "../components/Footer";
 
 const InformacionDonaciones = () => {
   const navigate = useNavigate();
@@ -205,6 +206,8 @@ const InformacionDonaciones = () => {
       <button className="btn-volver-home" onClick={() => navigate("/")}>
         ← Volver al Inicio
       </button>
+
+      <Footer />
 
     </div>
   );

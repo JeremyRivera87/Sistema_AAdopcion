@@ -1,6 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import "../styles/InformacionMascotas.css";
+import Footer from "../components/Footer";
 
 const InformacionMascotas = () => {
   const navigate = useNavigate();
@@ -215,6 +216,8 @@ const InformacionMascotas = () => {
       <button className="btn-volver-home" onClick={() => navigate("/")}>
         ← Volver al Inicio
       </button>
+
+      <Footer />
 
     </div>
   );
