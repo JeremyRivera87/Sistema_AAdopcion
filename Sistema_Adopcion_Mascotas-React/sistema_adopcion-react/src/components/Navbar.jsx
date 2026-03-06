@@ -60,9 +60,9 @@ const Navbar = () => {
           
           {/* Inicio */}
           <li>
-            <a onClick={() => { navigate("/"); cerrarMenus(); }}>
+            <button onClick={() => { navigate("/"); cerrarMenus(); }}>
               Inicio
-            </a>
+            </button>
           </li>
 
           {/* Nosotros (con menú desplegable) */}
@@ -71,9 +71,9 @@ const Navbar = () => {
             onMouseEnter={() => window.innerWidth > 768 && setMenuAbierto('nosotros')}
             onMouseLeave={() => window.innerWidth > 768 && cerrarMenus()}
           >
-            <a onClick={() => toggleMenu('nosotros')}>
-              Sobre Nosotros <span className="arrow">▼</span>
-            </a>
+            <button onClick={() => toggleMenu('nosotros')}>
+              Sobre Nosotros
+            </button>
             
             {menuAbierto === 'nosotros' && (
               <div className="mega-menu nosotros-menu">
@@ -142,9 +142,9 @@ const Navbar = () => {
             onMouseEnter={() => window.innerWidth > 768 && setMenuAbierto('servicios')}
             onMouseLeave={() => window.innerWidth > 768 && cerrarMenus()}
           >
-            <a onClick={() => toggleMenu('servicios')}>
-              Servicios <span className="arrow">▼</span>
-            </a>
+            <button onClick={() => toggleMenu('servicios')}>
+              Servicios
+            </button>
             
             {menuAbierto === 'servicios' && (
               <div className="mega-menu servicios-menu">
@@ -240,9 +240,9 @@ const Navbar = () => {
             onMouseEnter={() => window.innerWidth > 768 && setMenuAbierto('contacto')}
             onMouseLeave={() => window.innerWidth > 768 && cerrarMenus()}
           >
-            <a onClick={() => toggleMenu('contacto')}>
-              Contacto <span className="arrow">▼</span>
-            </a>
+            <button onClick={() => toggleMenu('contacto')}>
+              Contacto
+            </button>
             
             {menuAbierto === 'contacto' && (
               <div className="mega-menu contacto-menu">

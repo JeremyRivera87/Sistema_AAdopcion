@@ -1,18 +1,16 @@
 import React, { useState } from "react";
+import Navbar from "../components/Navbar";
 import Carousel from "../components/Carousel";
 import CustomAlert from "../components/CustomAlert";
 import Footer from "../components/Footer";
 import "../styles/User.css";
-import logo from "../img/logo-light-transparent.png";
 import img1 from "../img/mayoria de edad.png"
 import img2 from "../img/servicios basicos 2.1.png"
 import img3 from "../img/cedula.png"
 import img4 from "../img/Formulario.png"
-
 import { useNavigate } from "react-router-dom";
 
 const Usuarios = () => {
-
   const navigate = useNavigate();
   const usuario = JSON.parse(localStorage.getItem("usuario"));
 
@@ -23,25 +21,6 @@ const Usuarios = () => {
     message: "",
     type: "info"
   });
-
-  const handleLogout = () => {
-    localStorage.removeItem("usuario");
-    navigate("/login");
-  };
-
-  // 🔹 Función para agendar cita (verificar sesión)
-  const handleAgendarCita = () => {
-    if (!usuario) {
-      setAlert({
-        isOpen: true,
-        title: "Sesión requerida",
-        message: "Debes iniciar sesión para agendar una cita",
-        type: "warning"
-      });
-    } else {
-      navigate("/agendar-cita");
-    }
-  };
 
   // Cerrar alerta y redirigir a login si es necesario
   const handleCloseAlert = () => {
@@ -56,52 +35,16 @@ const Usuarios = () => {
   return (
     <div className="user-page">
 
-      <nav className="top-navbar">
-
-        <div className="nav-left">
-          <div className="logo">
-            <img src={logo} alt="Logo" />
-          </div>
-        </div>
-
-        <div className="nav-center">
-          <a href="/">Inicio</a>
-          <a href="#">Sobre Nosotros</a>
-          <a href="#">Servicios</a>
-          <a href="#">Contacto</a>
-        </div>
-
-        <div className="nav-right">
-          {!usuario ? (
-          <a href="/login">Iniciar Sesión</a>
-          ) : (
-            <div className="user-icons">
-              <span className="icon-profile"
-                title="Perfil"
-                onClick={() => navigate("/perfil")}
-              >
-                👤
-              </span>
-              <span
-                className="icon-logout"
-                title="Cerrar sesión"
-                onClick={handleLogout}
-              >
-                🚪
-              </span>
-            </div>
-          )}
-        </div>
-      </nav>
+      <Navbar />
 
       <main className="home-user-container">
 
         <header className="header">
           {usuario ? (
-          <h1>Bienvenido <span className="user-name">{usuario.nombre}</span> a Animal Home 🐾</h1>
-        ) : (
-          <h1>Bienvenido al Sistema de Adopción de Mascotas</h1>
-        )}
+            <h1>Bienvenido <span className="user-name">{usuario.nombre}</span> a Animal Home 🐾</h1>
+          ) : (
+            <h1>Bienvenido al Sistema de Adopción de Mascotas</h1>
+          )}
         </header>
 
         <section className="intro">
@@ -110,7 +53,7 @@ const Usuarios = () => {
           </p>
 
           <div className="buttons">
-            <button className="btn" onClick={() => navigate("/info-mascotas")}>Ver Mascotas</button>
+            <button className="btn" onClick={() => navigate("/mascotas")}>Ver Mascotas</button>
             <button className="btn" onClick={() => navigate("/info-citas")}>Agendar Cita</button> 
             <button className="btn" onClick={() => navigate("/donaciones")}>Donaciones</button>
           </div>

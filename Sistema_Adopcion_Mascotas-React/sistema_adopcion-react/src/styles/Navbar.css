@@ -1,9 +1,9 @@
 /* =========================
-   NAVBAR PRINCIPAL
+   NAVBAR PRINCIPAL - FONDO VERDE
 ========================= */
 .navbar {
-  background: white;
-  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+  background: linear-gradient(135deg, var(--primary-green), var(--secondary-green));
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
   position: sticky;
   top: 0;
   z-index: 1000;
@@ -12,7 +12,7 @@
 .navbar-container {
   max-width: 1400px;
   margin: 0 auto;
-  padding: 0 40px;
+  padding: 0 10px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -23,28 +23,21 @@
    LOGO
 ========================= */
 .navbar-logo {
+  margin-right: 15px;
+  cursor: pointer;  
+  transition: all 0.3s ease;
   display: flex;
   align-items: center;
-  gap: 12px;
-  cursor: pointer;
-  transition: all 0.3s ease;
 }
 
 .navbar-logo:hover {
   transform: scale(1.05);
 }
 
-.logo-icon {
-  font-size: 36px;
-}
-
-.logo-text {
-  font-size: 26px;
-  font-weight: 700;
-  background: linear-gradient(135deg, var(--primary-green), var(--secondary-green));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+.logo-img {
+  height: 45px;
+  width: auto;
+  object-fit: contain;
 }
 
 /* =========================
@@ -63,13 +56,13 @@
 .navbar-toggle span {
   width: 28px;
   height: 3px;
-  background: var(--primary-green);
+  background: white;
   border-radius: 3px;
   transition: all 0.3s ease;
 }
 
 .navbar-toggle:hover span {
-  background: var(--secondary-green);
+  background: rgba(255, 255, 255, 0.8);
 }
 
 /* =========================
@@ -78,7 +71,7 @@
 .navbar-menu {
   display: flex;
   align-items: center;
-  gap: 5px;
+  gap: 8px;
   list-style: none;
   margin: 0;
   padding: 0;
@@ -88,32 +81,100 @@
   position: relative;
 }
 
-.navbar-menu > li > a {
+/* BOTONES DEL MENÚ */
+.navbar-menu > li > button {
   display: flex;
   align-items: center;
-  gap: 6px;
-  padding: 12px 20px;
-  color: var(--text-dark);
+  padding: 10px 18px;
+  color: white;
   font-size: 15px;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
   border-radius: 8px;
   white-space: nowrap;
+  background: transparent;
+  border: none;
+  font-family: inherit;
 }
 
-.navbar-menu > li > a:hover {
-  background: #f0fdf9;
-  color: var(--primary-green);
+.navbar-menu > li > button:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
 }
 
-.arrow {
+/* =========================
+   FLECHA DESPLEGABLE - CON ::after
+========================= */
+.menu-desplegable > button::after {
+  content: '▾';
   font-size: 10px;
+  margin-left: 6px;
+  display: inline-block;
   transition: transform 0.3s ease;
 }
 
-.menu-desplegable:hover .arrow {
+.menu-desplegable:hover > button::after,
+.menu-desplegable.active > button::after {
   transform: rotate(180deg);
+}
+
+/* =========================
+   ICONOS DE USUARIO (derecha)
+========================= */
+.navbar-user-icons {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.icon-profile,
+.icon-admin,
+.icon-logout {
+  font-size: 22px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 8px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+}
+
+.icon-profile:hover,
+.icon-admin:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: scale(1.1);
+}
+
+.icon-logout {
+  background: rgba(239, 68, 68, 0.2);
+}
+
+.icon-logout:hover {
+  background: rgba(239, 68, 68, 0.4);
+  transform: scale(1.1);
+}
+
+.btn-login-icon {
+  padding: 10px 24px;
+  background: white;
+  color: var(--primary-green);
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 700;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  font-family: inherit;
+}
+
+.btn-login-icon:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
 }
 
 /* =========================
@@ -135,7 +196,8 @@
   z-index: 9999;
 }
 
-.menu-desplegable:hover .mega-menu {
+.menu-desplegable:hover .mega-menu,
+.menu-desplegable.active .mega-menu {
   opacity: 1;
   visibility: visible;
   margin-top: 15px;
@@ -224,31 +286,6 @@
 }
 
 /* =========================
-   BOTONES ESPECIALES
-========================= */
-.btn-login {
-  background: linear-gradient(135deg, var(--primary-green), var(--secondary-green)) !important;
-  color: white !important;
-  padding: 10px 24px !important;
-  border-radius: 25px !important;
-  box-shadow: 0 4px 15px rgba(85, 183, 165, 0.3) !important;
-}
-
-.btn-login:hover {
-  transform: translateY(-2px) !important;
-  box-shadow: 0 6px 20px rgba(85, 183, 165, 0.4) !important;
-}
-
-.btn-logout {
-  color: #ef4444 !important;
-}
-
-.btn-logout:hover {
-  background: #fee2e2 !important;
-  color: #dc2626 !important;
-}
-
-/* =========================
    RESPONSIVE
 ========================= */
 @media (max-width: 1024px) {
@@ -257,10 +294,10 @@
   }
 
   .navbar-menu {
-    gap: 0;
+    gap: 5px;
   }
 
-  .navbar-menu > li > a {
+  .navbar-menu > li > button {
     padding: 10px 15px;
     font-size: 14px;
   }
@@ -278,6 +315,11 @@
 @media (max-width: 768px) {
   .navbar-toggle {
     display: flex;
+    order: 2;
+  }
+
+  .navbar-user-icons {
+    order: 3;
   }
 
   .navbar-menu {
@@ -285,14 +327,16 @@
     top: 80px;
     left: 0;
     right: 0;
-    background: white;
+    background: linear-gradient(135deg, var(--primary-green), var(--secondary-green));
     flex-direction: column;
     align-items: stretch;
     gap: 0;
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.3s ease;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+    order: 4;
+    width: 100%;
   }
 
   .navbar-menu.active {
@@ -301,12 +345,15 @@
   }
 
   .navbar-menu > li {
-    border-bottom: 1px solid #e5e7eb;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   }
 
-  .navbar-menu > li > a {
+  .navbar-menu > li > button {
     padding: 16px 20px;
     border-radius: 0;
+    justify-content: space-between;
+    width: 100%;
+    text-align: left;
   }
 
   .mega-menu {
@@ -318,8 +365,9 @@
     opacity: 1;
     visibility: visible;
     display: none;
-    border-top: 2px solid var(--primary-green);
-    background: #f9fafb;
+    border-top: 2px solid rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
   }
 
   .menu-desplegable.active .mega-menu {
@@ -340,27 +388,46 @@
 
   .mega-menu-column h3 {
     font-size: 13px;
+    color: white;
+    border-bottom-color: rgba(255, 255, 255, 0.3);
   }
 
   .mega-menu-column ul li {
     padding: 10px;
+    background: rgba(255, 255, 255, 0.1);
+    margin-bottom: 5px;
   }
 
   .mega-menu-column ul li:hover {
+    background: rgba(255, 255, 255, 0.2);
     transform: none;
   }
 
   .mega-menu-column ul li strong {
     font-size: 13px;
+    color: white;
   }
 
   .mega-menu-column ul li p {
     font-size: 11px;
+    color: rgba(255, 255, 255, 0.8);
   }
 
-  /* En móvil, los menús se expanden al hacer click */
-  .menu-desplegable > a {
-    justify-content: space-between;
+  .navbar-user-icons {
+    gap: 10px;
+  }
+
+  .icon-profile,
+  .icon-admin,
+  .icon-logout {
+    font-size: 20px;
+    width: 36px;
+    height: 36px;
+  }
+
+  .btn-login-icon {
+    padding: 8px 16px;
+    font-size: 12px;
   }
 }
 
@@ -370,12 +437,8 @@
     padding: 0 15px;
   }
 
-  .logo-icon {
-    font-size: 28px;
-  }
-
-  .logo-text {
-    font-size: 20px;
+  .logo-img {
+    height: 50px;
   }
 
   .navbar-menu {
@@ -388,6 +451,18 @@
 
   .mega-menu-column ul li .icon {
     font-size: 20px;
+  }
+
+  .navbar-user-icons {
+    gap: 8px;
+  }
+
+  .icon-profile,
+  .icon-admin,
+  .icon-logout {
+    font-size: 18px;
+    width: 32px;
+    height: 32px;
   }
 }
 
@@ -410,7 +485,7 @@
 }
 
 /* =========================
-   OVERLAY PARA CERRAR MENÚS
+   OVERLAY PARA CERRAR MENÚS (desktop)
 ========================= */
 .menu-desplegable:hover::before {
   content: '';
@@ -421,4 +496,11 @@
   bottom: 0;
   background: transparent;
   z-index: 999;
+  display: none;
+}
+
+@media (min-width: 769px) {
+  .menu-desplegable:hover::before {
+    display: block;
+  }
 }
