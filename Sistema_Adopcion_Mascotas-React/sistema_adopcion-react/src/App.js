@@ -22,6 +22,8 @@ import AdminSolicitudes from './pages/AdminSolicitudes';
 import AdminMascotas from "./pages/AdminMascotas";
 import InformacionCitas from './pages/InformacionCitas';
 import AgendarCitas from './pages/AgendarCitas';
+import Voluntariado from './pages/Voluntariado';
+import AdminVoluntariado from './pages/AdminVoluntariado';
 import MisCitas from './pages/MisCitas';
 import InformacionDonaciones from './pages/InformacionDonaciones';
 import AdminCitas from './pages/AdminCitas';
@@ -65,6 +67,8 @@ function App() {
         <Route path="/admin/citas" element={<AdminCitas />} />
         <Route path="/donar" element={<Donar />} />
         <Route path="/donaciones" element={<InformacionDonaciones />} />
+        <Route path="/voluntariado" element={<Voluntariado />} />
+        <Route path="/admin/voluntariado" element={<AdminVoluntariado />} />
         <Route path="/donar-especie" element={<DonarEspecie />} />
         <Route path="/seleccionar-donacion" element={<SeleccionarDonacion />} />
         <Route path="/admin/donaciones" element={<AdminDonaciones />} />

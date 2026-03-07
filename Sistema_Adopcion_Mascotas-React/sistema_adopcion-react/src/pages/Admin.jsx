@@ -40,6 +40,9 @@ const Admin = () => {
       const resSolicitudes = await fetch("http://localhost:4000/api/solicitudes");
       const dataSolicitudes = await resSolicitudes.json();
 
+      const resVoluntariado = await fetch("http://localhost:4000/api/voluntariado/stats/general");
+      const dataVoluntariado = await resVoluntariado.json();
+
       const totalRecaudado = dataDonaciones
         .filter(d => d.tipo_donacion === "monetaria")
         .reduce((sum, d) => sum + parseFloat(d.monto || 0), 0);
@@ -50,8 +53,9 @@ const Admin = () => {
         solicitudes: dataSolicitudes.length || 0,
         citas: dataCitas.length || 0,
         donaciones: dataDonaciones.length || 0,
-        totalRecaudado: totalRecaudado.toFixed(2) 
-      });
+        totalRecaudado: totalRecaudado.toFixed(2),
+        solicitudesVoluntarios: dataVoluntariado.total || 0 
+      }); 
     } catch (error) {
       console.error("Error cargando estadísticas", error);
     } finally {
@@ -81,7 +85,7 @@ const Admin = () => {
       setMascotas(data);
     } catch (error) {
       console.error("Error al cargar mascotas:", error);
-    } finally {
+    } finally { 
       setLoadingMascotas(false);
     }
   };
@@ -113,6 +117,7 @@ const Admin = () => {
           <a onClick={() => navigate("/admin/citas")} style={{ cursor: "pointer" }}>📅 Citas</a>
           <a onClick={() => navigate("/admin/donaciones")} style={{ cursor: "pointer" }}>💰 Donaciones</a>
           <a onClick={abrirSelectorMascotas} style={{ cursor: "pointer" }}>🩺 Historial Médico</a>
+          <a onClick={() => navigate("/admin/voluntariado")} style={{ cursor: "pointer" }}>🙋 Voluntariado</a>
           <a onClick={() => navigate("/admin/avisos")} style={{ cursor: "pointer" }}>📢 Avisos Carousel</a> 
 
           <a className="logout" onClick={cerrarSesion} style={{ cursor: "pointer" }}>
@@ -162,6 +167,11 @@ const Admin = () => {
             <div className="admin-card donaciones-card">
               <h3>Total Recaudado</h3>
               <p>${stats.totalRecaudado}</p>
+            </div>
+
+            <div className="admin-card donaciones-card">
+              <h3>Solicitud Voluntarios</h3>
+              <p>{stats.solicitudesVoluntarios}</p>
             </div>
           </section>
         )}

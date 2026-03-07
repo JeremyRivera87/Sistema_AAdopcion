@@ -8,7 +8,8 @@ const mascotasRoutes = require("./routes/mascotas");
 const solicitudesRoutes = require('./routes/solicitudes');
 const citasRoutes = require('./routes/citas');
 const historialRoutes = require('./routes/historial');
-const donacionesRoutes = require('./routes/donaciones')
+const donacionesRoutes = require('./routes/donaciones');
+const voluntariadoRoutes = require('./routes/voluntariado')
 
 
 const app = express();
@@ -34,3 +35,4 @@ app.use('/api/solicitudes', solicitudesRoutes);
 app.use('/api/citas', citasRoutes);
 app.use('/api/historial', historialRoutes);
 app.use('/api/donaciones', donacionesRoutes);
+app.use('/api/voluntariado', voluntariadoRoutes);

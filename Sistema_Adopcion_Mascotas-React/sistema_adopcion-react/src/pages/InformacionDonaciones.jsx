@@ -151,7 +151,7 @@ const InformacionDonaciones = () => {
               <button className="btn-forma">Donar Artículos</button>
             </div>
 
-            <div className="forma-card" onClick={() => navigate("/agendar-cita")}>
+            <div className="forma-card" onClick={() => navigate("/voluntariado")}>
               <div className="forma-icon">🤝</div>
               <h3>Voluntariado</h3>
               <p>Dona tu tiempo y ayúdanos con el cuidado diario de los animales</p>
