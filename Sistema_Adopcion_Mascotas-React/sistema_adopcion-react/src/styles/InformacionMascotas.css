@@ -224,6 +224,13 @@
   transition: all 0.3s ease;
 }
 
+.stat-card .stat-number {
+  font-size: 48px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: #ffffff;
+}
+
 .stat-card:hover {
   transform: scale(1.05);
   background: rgba(255, 255, 255, 0.15);

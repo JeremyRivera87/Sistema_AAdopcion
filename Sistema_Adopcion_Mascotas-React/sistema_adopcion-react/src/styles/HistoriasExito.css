@@ -1,0 +1,514 @@
+/* =========================
+   HISTORIAS DE ÉXITO PAGE
+========================= */
+.historias-exito-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: #f4f6f8;
+}
+
+.historias-container {
+  flex: 1;
+}
+
+/* =========================
+   HERO SECTION
+========================= */
+.hero-historias {
+  background: linear-gradient(135deg, var(--primary-green), var(--secondary-green));
+  padding: 80px 40px 60px;
+  text-align: center;
+  color: white;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-historias::before {
+  content: '❤️';
+  position: absolute;
+  font-size: 300px;
+  opacity: 0.05;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.hero-historias-content {
+  max-width: 800px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.hero-historias h1 {
+  font-size: 48px;
+  font-weight: 800;
+  margin: 0 0 20px 0;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.hero-historias-subtitle {
+  font-size: 20px;
+  line-height: 1.6;
+  opacity: 0.95;
+  margin: 0;
+}
+
+/* =========================
+   INTRODUCCIÓN
+========================= */
+.intro-historias {
+  padding: 80px 40px;
+  background: white;
+}
+
+.intro-historias-content {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.intro-historias-content h2 {
+  font-size: 38px;
+  color: var(--text-dark);
+  margin: 0 0 15px 0;
+  font-weight: 700;
+}
+
+.intro-line {
+  width: 100px;
+  height: 4px;
+  background: linear-gradient(135deg, var(--primary-green), var(--secondary-green));
+  margin: 0 auto 30px;
+  border-radius: 2px;
+}
+
+.intro-historias-content p {
+  font-size: 18px;
+  line-height: 1.8;
+  color: var(--text-gray);
+  margin: 0;
+}
+
+/* =========================
+   ESTADÍSTICAS
+========================= */
+.stats-historias {
+  padding: 60px 40px;
+  background: linear-gradient(135deg, rgba(85, 183, 165, 0.05), rgba(47, 143, 131, 0.02));
+}
+
+.stats-grid {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 40px;
+}
+
+.stat-historia {
+  text-align: center;
+  padding: 30px 20px;
+  background: white;
+  border-radius: var(--radius);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+}
+
+.stat-historia:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 25px rgba(85, 183, 165, 0.2);
+}
+
+.stat-numero {
+  font-size: 52px;
+  font-weight: 800;
+  background: linear-gradient(135deg, var(--primary-green), var(--secondary-green));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 10px;
+}
+
+.stat-historia p {
+  font-size: 16px;
+  color: var(--text-dark);
+  margin: 0;
+  font-weight: 600;
+}
+
+/* =========================
+   GRID DE HISTORIAS
+========================= */
+.historias-grid-section {
+  padding: 80px 40px;
+  background: white;
+}
+
+.historias-grid-section h2 {
+  font-size: 38px;
+  color: var(--text-dark);
+  text-align: center;
+  margin: 0 0 60px 0;
+  font-weight: 700;
+}
+
+.historias-grid {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+  gap: 40px;
+}
+
+.historia-card {
+  background: white;
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+}
+
+.historia-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 12px 30px rgba(85, 183, 165, 0.2);
+  border-color: var(--primary-green);
+}
+
+.historia-header {
+  padding: 40px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+
+.historia-imagen-emoji {
+  font-size: 80px;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+}
+
+.historia-badge {
+  background: rgba(255, 255, 255, 0.9);
+  color: var(--text-dark);
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.historia-content {
+  padding: 30px;
+  background: white;
+}
+
+.historia-info-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.historia-content h3 {
+  font-size: 26px;
+  color: var(--text-dark);
+  margin: 0;
+  font-weight: 700;
+}
+
+.historia-fecha {
+  font-size: 14px;
+  color: var(--text-gray);
+  font-weight: 600;
+  background: #f3f4f6;
+  padding: 6px 12px;
+  border-radius: 15px;
+}
+
+.historia-familia {
+  font-size: 15px;
+  color: var(--text-gray);
+  margin: 0 0 20px 0;
+}
+
+.historia-familia strong {
+  color: var(--primary-green);
+  font-weight: 700;
+}
+
+.historia-texto {
+  font-size: 16px;
+  line-height: 1.8;
+  color: var(--text-gray);
+  margin: 0 0 25px 0;
+  text-align: justify;
+}
+
+.historia-footer {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding-top: 20px;
+  border-top: 2px solid #f3f4f6;
+}
+
+.corazon {
+  font-size: 24px;
+  animation: heartbeat 1.5s ease-in-out infinite;
+}
+
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1); }
+  10%, 30% { transform: scale(1.1); }
+  20%, 40% { transform: scale(1); }
+}
+
+.mensaje-final {
+  font-size: 14px;
+  color: var(--primary-green);
+  font-weight: 700;
+  font-style: italic;
+}
+
+/* =========================
+   TESTIMONIOS DESTACADOS
+========================= */
+.testimonios-destacados {
+  padding: 80px 40px;
+  background: linear-gradient(135deg, rgba(85, 183, 165, 0.05), rgba(47, 143, 131, 0.02));
+}
+
+.testimonios-destacados h2 {
+  font-size: 38px;
+  color: var(--text-dark);
+  text-align: center;
+  margin: 0 0 60px 0;
+  font-weight: 700;
+}
+
+.testimonios-grid {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 30px;
+}
+
+.testimonio-destacado {
+  background: white;
+  padding: 40px 35px;
+  border-radius: var(--radius);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  border-left: 4px solid var(--primary-green);
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.testimonio-destacado:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(85, 183, 165, 0.15);
+}
+
+.comillas-grandes {
+  font-size: 70px;
+  color: var(--primary-green);
+  opacity: 0.2;
+  line-height: 1;
+  margin-bottom: 10px;
+  font-family: Georgia, serif;
+}
+
+.testimonio-texto {
+  font-size: 16px;
+  line-height: 1.8;
+  color: var(--text-gray);
+  margin: 0 0 25px 0;
+  font-style: italic;
+}
+
+.testimonio-autor {
+  text-align: right;
+}
+
+.testimonio-autor strong {
+  font-size: 16px;
+  color: var(--primary-green);
+  font-weight: 700;
+}
+
+/* =========================
+   CALL TO ACTION
+========================= */
+.cta-historias {
+  padding: 80px 40px;
+  background: linear-gradient(135deg, var(--primary-green), var(--secondary-green));
+  text-align: center;
+  color: white;
+}
+
+.cta-historias-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.cta-historias h2 {
+  font-size: 38px;
+  margin: 0 0 15px 0;
+  font-weight: 700;
+}
+
+.cta-historias p {
+  font-size: 20px;
+  margin: 0 0 40px 0;
+  opacity: 0.95;
+}
+
+.cta-historias-buttons {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.cta-historias-btn {
+  padding: 16px 40px;
+  border: none;
+  border-radius: var(--radius);
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 700;
+  transition: all 0.3s ease;
+  font-family: inherit;
+}
+
+.cta-historias-btn.primary {
+  background: white;
+  color: var(--primary-green);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.cta-historias-btn.primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+.cta-historias-btn.secondary {
+  background: transparent;
+  color: white;
+  border: 2px solid white;
+}
+
+.cta-historias-btn.secondary:hover {
+  background: white;
+  color: var(--primary-green);
+  transform: translateY(-3px);
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+@media (max-width: 1024px) {
+  .hero-historias {
+    padding: 60px 30px 50px;
+  }
+
+  .intro-historias,
+  .stats-historias,
+  .historias-grid-section,
+  .testimonios-destacados,
+  .cta-historias {
+    padding: 60px 30px;
+  }
+
+  .historias-grid {
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-historias {
+    padding: 50px 20px 40px;
+  }
+
+  .hero-historias h1 {
+    font-size: 36px;
+  }
+
+  .hero-historias-subtitle {
+    font-size: 18px;
+  }
+
+  .intro-historias,
+  .stats-historias,
+  .historias-grid-section,
+  .testimonios-destacados,
+  .cta-historias {
+    padding: 50px 20px;
+  }
+
+  .intro-historias-content h2,
+  .historias-grid-section h2,
+  .testimonios-destacados h2,
+  .cta-historias h2 {
+    font-size: 32px;
+  }
+
+  .stats-grid {
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+
+  .historias-grid {
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+
+  .testimonios-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .cta-historias-buttons {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .cta-historias-btn {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-historias h1 {
+    font-size: 28px;
+  }
+
+  .hero-historias-subtitle {
+    font-size: 16px;
+  }
+
+  .intro-historias-content h2,
+  .historias-grid-section h2,
+  .testimonios-destacados h2,
+  .cta-historias h2 {
+    font-size: 26px;
+  }
+
+  .historia-header {
+    padding: 30px 20px;
+  }
+
+  .historia-imagen-emoji {
+    font-size: 60px;
+  }
+
+  .historia-content {
+    padding: 20px;
+  }
+}

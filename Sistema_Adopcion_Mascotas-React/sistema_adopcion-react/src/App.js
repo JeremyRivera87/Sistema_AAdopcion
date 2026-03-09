@@ -5,6 +5,8 @@ import Usuarios from "./pages/Usuarios";
 import QuienesSomos from './pages/QuienesSomos';
 import MisionVision from './pages/MisionVision';
 import Equipo from './pages/Equipo';
+import HistoriasExito from './pages/HistoriasExito';
+import Testimonios from './pages/Testimonios';
 
 import Perfil from "./pages/Perfil";
 import AdminAvisos from './pages/AdminAvisos';
@@ -47,6 +49,8 @@ function App() {
         <Route path="/quienes-somos" element={<QuienesSomos />} />
         <Route path="/mision-vision" element={<MisionVision />} />
         <Route path="/equipo" element={<Equipo />} />
+        <Route path="/historias-exito" element={<HistoriasExito />} />
+        <Route path="/testimonios" element={<Testimonios />} />
 
         <Route path="/Login" element={<Login />} />
         <Route path="/admin/avisos" element={<AdminAvisos />} />

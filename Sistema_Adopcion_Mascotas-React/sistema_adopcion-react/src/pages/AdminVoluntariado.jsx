@@ -169,14 +169,14 @@ const AdminVoluntariado = () => {
       
       {/* Header */}
       <div className="admin-vol-header">
-        <div className="header-content">
+        <div className="header-top">
           <button className="btn-volver" onClick={() => navigate("/admin")}>
             ← Volver al Dashboard
           </button>
-          <h1>Gestión de Voluntariado</h1>
         </div>
+        <h1>Gestión de Voluntariado</h1>
       </div>
-
+      
       {/* Estadísticas */}
       <div className="stats-vol-container">
         <div className="stat-vol-card total">
