@@ -7,6 +7,13 @@ import MisionVision from './pages/MisionVision';
 import Equipo from './pages/Equipo';
 import HistoriasExito from './pages/HistoriasExito';
 import Testimonios from './pages/Testimonios';
+import Galeria from './pages/Galeria';
+import Apadrina from './pages/Apadrina';
+import Consejos from './pages/Consejos';
+import PreguntasFrecuentes from './pages/PreguntasFrecuentes';
+import Blog from './pages/Blog';
+import Contacto from './pages/Contacto';
+import Ubicacion from './pages/Ubicacion';
 
 import Perfil from "./pages/Perfil";
 import AdminAvisos from './pages/AdminAvisos';
@@ -51,6 +58,13 @@ function App() {
         <Route path="/equipo" element={<Equipo />} />
         <Route path="/historias-exito" element={<HistoriasExito />} />
         <Route path="/testimonios" element={<Testimonios />} />
+        <Route path="/galeria" element={<Galeria />} />
+        <Route path="/apadrina" element={<Apadrina />} />
+        <Route path="/consejos" element={<Consejos />} />
+        <Route path="/preguntas-frecuentes" element={<PreguntasFrecuentes />} />
+        <Route path="/blog" element={<Blog />} />
+        <Route path="/contacto" element={<Contacto />} />
+        <Route path="/ubicacion" element={<Ubicacion />} />
 
         <Route path="/Login" element={<Login />} />
         <Route path="/admin/avisos" element={<AdminAvisos />} />
